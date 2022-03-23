@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../configs/database");
 
+//~ Définition du modéle quizz
 const Quizz = sequelize.define(
   "Quizz",
   {

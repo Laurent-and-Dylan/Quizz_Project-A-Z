@@ -80,8 +80,8 @@ CREATE TABLE IF NOT EXISTS notes (
 
 INSERT INTO users (username,email,password,status) 
 VALUES 
-    ('Laurent','1491laurent@gmail.com','azerty11234',true),
-    ('Dylan','dylan@gmail.com','1234567',false);
+    ('Laurent','1491laurent@gmail.com','azerty1234',true),
+    ('Dylan','dylan@gmail.com','azerty1234',false);
 
 INSERT INTO categories (name) 
 VALUES ('History'), ('Chemistry'), ('Music'), ('Math');
