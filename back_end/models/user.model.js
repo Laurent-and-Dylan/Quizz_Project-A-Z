@@ -2,6 +2,7 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../configs/database");
 const bcrypt = require("bcrypt");
 
+//~ Définition du modéle user
 const User = sequelize.define(
   "User",
   {
@@ -18,6 +19,7 @@ const User = sequelize.define(
     tableName: "users",
     timestamps: false,
     hooks: {
+      //~ Function de hashage des mots de passes obligatoire avant tout enregistrement dans la table users
       beforeCreate: (user) => {
         const salt = bcrypt.genSaltSync(10, "a");
         user.password = bcrypt.hashSync(user.password, salt);
@@ -26,6 +28,7 @@ const User = sequelize.define(
   }
 );
 
+//~ Function de vérication des mots de passes
 User.prototype.validPassword = (pass, hash) => {
   return bcrypt.compareSync(pass, hash);
 };

@@ -1,6 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../configs/database");
 
+//~ Définition du modéle response
 const Response = sequelize.define(
   "Responses",
   {
