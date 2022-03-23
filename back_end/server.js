@@ -17,9 +17,12 @@ app.use(checkUser);
 // Routes
 const UserRoutes = require("./routes/user.routes");
 const QuizzRoutes = require("./routes/quizz.routes");
+const StatRoutes = require("./routes/stat.routes");
 
 app.use("/api/user", UserRoutes);
 app.use("/api/quizz", QuizzRoutes);
+app.use("/api/stat", StatRoutes);
+
 
 // On écoute l'application
 app.listen(process.env.PORT, () => {
