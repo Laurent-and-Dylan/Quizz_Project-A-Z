@@ -70,7 +70,7 @@ CREATE TABLE IF NOT EXISTS friends (
 );
 
 CREATE TABLE IF NOT EXISTS notes (
-  id_notes INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL,
+  id_notes INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
   id_user INTEGER,
   id_quizz INTEGER,
   note INTEGER NOT NULL,
@@ -80,8 +80,8 @@ CREATE TABLE IF NOT EXISTS notes (
 
 INSERT INTO users (username,email,password,status) 
 VALUES 
-    ('Laurent','1491laurent@gmail.com','azerty11234',true),
-    ('Dylan','dylan@gmail.com','1234567',false);
+    ('Laurent','1491laurent@gmail.com','azerty1234',true),
+    ('Dylan','dylan@gmail.com','azerty1234',false);
 
 INSERT INTO categories (name) 
 VALUES ('History'), ('Chemistry'), ('Music'), ('Math');
