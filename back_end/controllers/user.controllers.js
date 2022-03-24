@@ -11,20 +11,22 @@ module.exports.register = async (req, res) => {
   //^ const password = req.body.password
   const { username, email, password } = req.body;
 
-  //~ Requête pour récuperer les infos d'un utilisateur
-  const user = await User.findOne({ where: { [Op.or]: { username, email } } });
+  //~ Requête vérifier la présence d'un utilisateur dans la database ou création de celui-ci
+  const user = await User.findOrCreate({
+    where: { [Op.or]: { username, email } },
+    defaults: { username, email, password },
+    raw: true,
+  });
 
-  console.log(user);
   //~ Structure de contrôle pour vérifier si le pseudo ou l'email n'est pas déjà existant
   if (user) {
-    if (user.dataValues.username === username)
+    if (user[0].username === username)
       return res.status(400).send(`${username} 'already exist !'`);
-    if (user.dataValues.email === email)
+    if (user[0].email === email)
       return res.status(400).send(`${email} 'already exist !'`);
   }
 
   //~ Requête de création d'un utilisateur
-  User.create({ username, email, password });
   res.status(201).send("You are now registered !");
 };
 
@@ -57,7 +59,36 @@ module.exports.login = async (req, res) => {
 
 module.exports.logout = (req, res) => {
   //~ Retrait du cookie JWT, des infos locals utilisateur et redirection sur la page d'accueil
+
   res.cookie("jwt", "", { maxAge: 0 });
   res.locals.user = null;
   res.redirect("/");
+};
+
+// * @desc Suppression d'un utilisateur
+// * @route POST /api/user/delete
+
+module.exports.delete = async (req, res) => {
+  const { password } = req.body;
+
+  //~ Vérification de la présence du token JWT et de sa validité
+
+  const token = req.cookies.jwt;
+  const id = token ? jwt.verify(token, process.env.SECRET_TOKEN).id : null;
+
+  //~ Structure de contrôle si Token invalide
+
+  if (!id) return res.status(400).send({ message: "Acces Denied !" });
+  const user = await User.findByPk(id);
+
+  //~ Suppression du compte si token et password valide ou si status admin
+
+  if (user.validPassword(password, user.password) || user.status) {
+    // Suppresion compte, retrait cookie/token
+    user.destroy();
+    res.cookie("jwt", "", 0);
+    res.status(200).send({ message: "User Delete" });
+  } else if (user.validPassword(password, user.password)) {
+    res.status(400).send({ message: "Wrong Password !" });
+  }
 };

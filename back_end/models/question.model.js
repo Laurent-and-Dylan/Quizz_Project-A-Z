@@ -5,7 +5,11 @@ const sequelize = require("../configs/database");
 const Question = sequelize.define(
   "Question",
   {
-    id_question: { type: DataTypes.INTEGER, primaryKey: true },
+    id_question: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     id_quizz: { type: DataTypes.INTEGER },
     id_category: { type: DataTypes.INTEGER },
     question: { type: DataTypes.STRING(255) },
