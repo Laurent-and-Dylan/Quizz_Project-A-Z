@@ -14,7 +14,9 @@ module.exports.checkUser = (req, res, next) => {
         next();
       } else {
         // ~ Si l'utilisateur possède un token valide
-        let user = await User.findOne({ where: { id_user: decodedToken.id } });
+        let user = await User.findOne({
+          where: { id_user: decodedToken.id_user },
+        });
         res.locals.user = user.dataValues;
         next();
       }
@@ -23,5 +25,20 @@ module.exports.checkUser = (req, res, next) => {
     //~ Si l'utilisateur n'est pas connecté et ne possède pas de token
     res.locals.user = null;
     next();
+  }
+};
+
+module.exports.verifyAuth = (req) => {
+  const token = req.cookies.jwt;
+  if (!token) return false;
+  const { id_user, status } = jwt.verify(token, process.env.SECRET_TOKEN)
+    ? jwt.verify(token, process.env.SECRET_TOKEN)
+    : null;
+
+  if (id_user && !status) return id_user;
+  else if (status) return "admin";
+  else {
+    req.cookies("jwt", "", 0);
+    return false;
   }
 };

@@ -35,7 +35,6 @@ module.exports.register = async (req, res) => {
 
 module.exports.login = async (req, res) => {
   const { pseudo, password } = req.body;
-
   //~ Requête pour récuperer les infos d'un utilisateur si l'email ou l'username correspondent
   const user = await User.findOne({
     where: { [Op.or]: { username: pseudo, email: pseudo } },
@@ -44,8 +43,8 @@ module.exports.login = async (req, res) => {
   //~ Vérification de la coherence des passwords et création d'un token web sous format JSON placé dans un cookie
   if (user.validPassword(password, user.dataValues.password)) {
     const maxAge = 3 * 60 * 60 * 24 * 1000;
-    const id = user.dataValues.id_user;
-    const token = jwt.sign({ id }, process.env.SECRET_TOKEN, {
+    const { id_user, status } = user;
+    const token = jwt.sign({ id_user, status }, process.env.SECRET_TOKEN, {
       expiresIn: maxAge,
     });
 
