@@ -12,7 +12,7 @@ app.use(express.json());
 //# JWT
 const { checkUser } = require("./middlewares/auth.middleware");
 
-// app.use(checkUser);
+app.use(checkUser);
 
 //# Routes
 const UserRoutes = require("./routes/user.routes");

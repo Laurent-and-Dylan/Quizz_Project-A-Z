@@ -3,7 +3,6 @@ const Response = require("../models/response.model");
 const Quizz = require("../models/quizz.model");
 const { Op, Sequelize } = require("sequelize");
 const { verifyAuth } = require("../middlewares/auth.middleware");
-const User = require("../models/user.model");
 
 //* @desc Création d'un quizz aléatoire
 //* @route GET /api/quizz/random
@@ -176,9 +175,8 @@ module.exports.editQuizz = async (req, res) => {
   const { id_quizz } = req.params;
   const { quests, resps, name } = req.body;
 
-  // //~ Controle d'authorisation de l'utilisateur
+  //~ Controle d'authorisation de l'utilisateur
   const auth = verifyAuth(req);
-  console.log(auth);
   if (!auth)
     return res
       .status(400)
@@ -191,10 +189,10 @@ module.exports.editQuizz = async (req, res) => {
   if (quizz === null && auth !== "admin")
     return res.status(400).send({ message: "Acces Denied" });
 
-  // //~ Requête pour mettre à jour le nom du quizz
+  //~ Requête pour mettre à jour le nom du quizz
   await Quizz.update({ name }, { where: { id_quizz } });
 
-  // //~ Requête pour mettre à jour les questions du quizz
+  //~ Requête pour mettre à jour les questions du quizz
   for (q in quests) {
     await Question.update(
       { question: quests[q][0] },
@@ -202,7 +200,7 @@ module.exports.editQuizz = async (req, res) => {
     );
   }
 
-  // //~ Requête pour mettre à jour les réponses de chaque question
+  //~ Requête pour mettre à jour les réponses de chaque question
   for (r in resps) {
     await Response.update(
       { response: resps[r][0] },
@@ -213,4 +211,25 @@ module.exports.editQuizz = async (req, res) => {
   res
     .status(201)
     .send({ message: `Your quizz ${name} has been edit correctly !` });
+};
+
+//* @desc Récupération de s quizz lié à un utilisateur
+//* @route GET /api/quizz/:id_user
+
+module.exports.getAllQuizzByUser = async (req, res) => {
+  const { id_user } = req.params;
+
+  //~ Controle d'authorisation de l'utilisateur
+  const auth = verifyAuth(req);
+  if (!auth) return res.status(400).send({ message: "Access Denied !" });
+
+  if (auth === id_user || auth === "admin") {
+    //~ Requête pour récupérer tout les quizz
+    const quizz = await Quizz.findAll({ where: { id_user }, raw: true });
+
+    //~ Sructure de contrôle et renvoie de réponse
+    if (!quizz[0])
+      return res.status(404).send({ message: "You do not have Quizz" });
+    return res.status(200).send({ quizz });
+  } else res.status(400).send({ message: "Access Denied !" });
 };

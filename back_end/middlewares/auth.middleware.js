@@ -1,7 +1,8 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user.model");
 
-//~ Middleware d'authentification grâce au JWT fourni à la connexion de l'utilisateur
+//# @desc Middleware d'authentification grâce au JWT fourni à la connexion de l'utilisateur
+//! Possibilité d'amélioratiion
 module.exports.checkUser = (req, res, next) => {
   const token = req.cookies.jwt;
   if (token) {
@@ -28,6 +29,7 @@ module.exports.checkUser = (req, res, next) => {
   }
 };
 
+//# @desc Vérification de la présence d'un id utilsateur ou d'un status administrateur dans le JWT token
 module.exports.verifyAuth = (req) => {
   const token = req.cookies.jwt;
   if (!token) return false;
@@ -35,10 +37,10 @@ module.exports.verifyAuth = (req) => {
     ? jwt.verify(token, process.env.SECRET_TOKEN)
     : null;
 
-  if (id_user && !status) return id_user;
-  else if (status) return "admin";
+  if (id_user && !status) return [id_user, false];
+  else if (status) return [id_user, true];
   else {
     req.cookies("jwt", "", 0);
-    return false;
+    return [false, false];
   }
 };

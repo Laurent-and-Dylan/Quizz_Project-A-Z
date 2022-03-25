@@ -1,7 +1,7 @@
 const User = require("../models/user.model");
 const { Op } = require("sequelize");
 const jwt = require("jsonwebtoken");
-
+const { verifyAuth } = require("../middlewares/auth.middleware");
 // * @desc Création d'un utilisateur
 // * @route POST /api/user/register
 
@@ -68,26 +68,45 @@ module.exports.logout = (req, res) => {
 // * @route POST /api/user/delete
 
 module.exports.delete = async (req, res) => {
-  const { password } = req.body;
+  const { password, username } = req.body;
 
   //~ Vérification de la présence du token JWT et de sa validité
+  const auth = verifyAuth(req);
 
-  const token = req.cookies.jwt;
-  const id = token ? jwt.verify(token, process.env.SECRET_TOKEN).id : null;
+  if (!auth) return res.status(400).send({ message: "Acces Denied !" });
 
-  //~ Structure de contrôle si Token invalide
-
-  if (!id) return res.status(400).send({ message: "Acces Denied !" });
-  const user = await User.findByPk(id);
+  //~ Requête pour récupérer les infos de l'utilisateur
+  const user = await User.findOne({
+    where: { [Op.or]: { id_user: auth, username } },
+  });
 
   //~ Suppression du compte si token et password valide ou si status admin
 
-  if (user.validPassword(password, user.password) || user.status) {
+  if (user.validPassword(password, user.password) || auth === "admin") {
     // Suppresion compte, retrait cookie/token
     user.destroy();
     res.cookie("jwt", "", 0);
     res.status(200).send({ message: "User Delete" });
   } else if (user.validPassword(password, user.password)) {
     res.status(400).send({ message: "Wrong Password !" });
+  }
+};
+
+// * @desc Mise à jour du profil utilisateur
+// * @route POST /api/user/update
+
+module.exports.updateProfile = async (req, res) => {
+  const { password, image, bio } = req.body;
+
+  //~ Vérification de la présence du token JWT et de sa validité
+  const auth = verifyAuth(req);
+  if (!auth[0]) return res.status(400).send({ message: "Access Denied !" });
+  else {
+    //~ Modification du profil utilisateur
+    await User.update(
+      { password, image, bio },
+      { where: { id_user: auth[0] }, individualHooks: true }
+    );
+    res.status(201).send({ message: "Account succesfully edit !" });
   }
 };

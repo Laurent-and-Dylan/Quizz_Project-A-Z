@@ -8,8 +8,6 @@ router.get("/category/:id_category", QuizzController.quizzOfCategory);
 router.post("/create", QuizzController.createQuizz);
 router.delete("/delete/:id_quizz", QuizzController.deleteQuizz);
 router.put("/edit/:id_quizz", QuizzController.editQuizz);
+router.get("/user/:id_user", QuizzController.getAllQuizzByUser);
 
 module.exports = router;
-
-//* @desc Suppression d'un quizz par un utilisateur ou un administrateur
-//* @route DELETE /api/quizz/delete/:id_quizz
