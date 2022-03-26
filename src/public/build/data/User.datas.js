@@ -1,24 +1,12 @@
-export function getUser(username, password) {
-  var myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
-  myHeaders.append("Accept", "application/json");
-  const myInit = {
-    method: "GET",
-    headers: myHeaders,
-    mode: "cors",
-    cache: "default",
-  };
-
-  fetch("127.0.0.1:3000/api/quizz/random/", {
+export async function getUser(pseudo, password) {
+  const init = {
+    method: "POST",
+    body: JSON.stringify({ pseudo, password }),
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
+      "Content-type": "application/json; charset=UTF-8",
     },
-  })
-    .then(async (res) => {
-      return res.json();
-    })
-    .then((data) => {
-      console.log(data);
-    });
+  };
+  return fetch("http://127.0.0.1:3000/api/user/login/", init).then((res) => {
+    return res.json();
+  });
 }

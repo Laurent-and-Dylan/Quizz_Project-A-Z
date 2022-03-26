@@ -35,10 +35,12 @@ module.exports.register = async (req, res) => {
 
 module.exports.login = async (req, res) => {
   const { pseudo, password } = req.body;
-  //~ Requête pour récuperer les infos d'un utilisateur si l'email ou l'username correspondent
+
+  // ~ Requête pour récuperer les infos d'un utilisateur si l'email ou l'username correspondent plus structure de contrôle
   const user = await User.findOne({
     where: { [Op.or]: { username: pseudo, email: pseudo } },
   });
+  if (!user) return res.status(404).send({ connexion: false });
 
   //~ Vérification de la coherence des passwords et création d'un token web sous format JSON placé dans un cookie
   if (user.validPassword(password, user.dataValues.password)) {
