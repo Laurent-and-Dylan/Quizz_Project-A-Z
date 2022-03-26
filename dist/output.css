@@ -580,6 +580,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 2.5rem;
 }
 
+.mt-4 {
+  margin-top: 1rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
 .block {
   display: block;
 }
@@ -630,6 +638,46 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .h-72 {
   height: 18rem;
+}
+
+.h-\[5vh\] {
+  height: 5vh;
+}
+
+.h-\[30vh\] {
+  height: 30vh;
+}
+
+.h-\[15vh\] {
+  height: 15vh;
+}
+
+.h-\[55vh\] {
+  height: 55vh;
+}
+
+.h-\[85vh\] {
+  height: 85vh;
+}
+
+.h-\[80\] {
+  height: 80;
+}
+
+.h-\[55\] {
+  height: 55;
+}
+
+.h-\[85\] {
+  height: 85;
+}
+
+.h-\[85bh\] {
+  height: 85bh;
+}
+
+.h-\[55bh\] {
+  height: 55bh;
 }
 
 .w-64 {
@@ -693,12 +741,28 @@ Ensure the default browser behavior of the `hidden` attribute.
   cursor: pointer;
 }
 
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
 .justify-center {
   justify-content: center;
 }
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
 }
 
 .rounded-xl {
@@ -773,6 +837,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .text-center {
   text-align: center;
+}
+
+.align-middle {
+  vertical-align: middle;
 }
 
 .text-3xl {
@@ -868,6 +936,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .md\:top-4 {
     top: 1rem;
+  }
+
+  .md\:m-2 {
+    margin: 0.5rem;
   }
 
   .md\:my-4 {
@@ -986,6 +1058,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   .lg\:py-24 {
     padding-top: 6rem;
     padding-bottom: 6rem;
+  }
+
+  .lg\:py-0 {
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
 
   .lg\:text-3xl {
