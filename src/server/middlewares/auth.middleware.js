@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const User = require("../models/user.model");
+const User = require("../models/user.model.js");
 
 //# @desc Middleware d'authentification grâce au JWT fourni à la connexion de l'utilisateur
 //! Possibilité d'amélioratiion
