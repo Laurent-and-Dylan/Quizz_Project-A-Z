@@ -2,6 +2,7 @@ const User = require("../models/user.model");
 const { Op } = require("sequelize");
 const jwt = require("jsonwebtoken");
 const { verifyAuth } = require("../middlewares/auth.middleware");
+
 // * @desc Création d'un utilisateur
 // * @route POST /api/user/register
 
@@ -12,22 +13,27 @@ module.exports.register = async (req, res) => {
   const { username, email, password } = req.body;
 
   //~ Requête vérifier la présence d'un utilisateur dans la database ou création de celui-ci
-  const user = await User.findOrCreate({
+  const user = await User.findOne({
     where: { [Op.or]: { username, email } },
-    defaults: { username, email, password },
     raw: true,
   });
 
   //~ Structure de contrôle pour vérifier si le pseudo ou l'email n'est pas déjà existant
   if (user) {
-    if (user[0].username === username)
-      return res.status(400).send(`${username} 'already exist !'`);
-    if (user[0].email === email)
-      return res.status(400).send(`${email} 'already exist !'`);
+    if (user.username === username) {
+      return res
+        .status(400)
+        .send({ register: false, message: `${username} already exist !` });
+    } else if (user.email === email) {
+      return res
+        .status(400)
+        .send({ register: false, message: `${email} already exist !` });
+    }
   }
 
   //~ Requête de création d'un utilisateur
-  res.status(201).send("You are now registered !");
+  User.create({ username, email, password });
+  res.status(201).send({ register: true });
 };
 
 // * @desc Connexion d'un utilisateur

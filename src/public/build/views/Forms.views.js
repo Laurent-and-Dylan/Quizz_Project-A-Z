@@ -6,7 +6,7 @@ import * as Controller from "../controllers/Forms.controller.js";
 
 function form(submit, input1, input2, input3 = null) {
   const register = input3
-    ? `<input type="text" placeholder="${input3}" class="w-80 h-8 mt-8 block mx-auto rounded-md text-xl text-center text-slate-400" id="email">`
+    ? `<input type="email" placeholder="${input3}" minlength="7" maxlength="40" class="w-80 h-8 mt-8 block mx-auto rounded-md text-xl text-center text-slate-400" id="email">`
     : "";
 
   document.querySelector("section").innerHTML = `
@@ -31,6 +31,9 @@ export const Display = {
     Remover.main();
     header("Register Form :", "LogIn");
     form("Register", "Username", "Password", "Email");
+    submit.addEventListener("click", (e) => {
+      Controller.register(email, username, password);
+    });
   },
   main() {
     Remover.main();
