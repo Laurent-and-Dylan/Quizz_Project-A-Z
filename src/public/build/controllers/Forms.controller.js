@@ -5,15 +5,18 @@ import {
   register as Register,
 } from "../data/User.datas.js";
 
+import { error } from "../components/error.js";
+
 export async function login(param1, param2) {
   const user = param1.value;
   const pass = param2.value;
 
-  if (!user || !pass) {
-    return alert("Veuillez remplir tout les champs");
-  }
+  if (!user || !pass) return alert("Veuillez remplir tout les champs");
+
   const { connexion } = await GetUser(user, pass);
-  console.log(connexion);
+
+  if (!connexion) return error("Wrong Informations !", "section", username);
+  console.log("connecter");
 }
 
 export async function register(param1, param2, param3) {
@@ -22,9 +25,10 @@ export async function register(param1, param2, param3) {
   const password = param3.value.match(/^[\S]{8,150}$/);
 
   if (email && username && password) {
-    const valid = await Register(email[0], username[0], password[0]);
-    console.log(valid);
+    const { register } = await Register(email[0], username[0], password[0]);
+    console.log(register);
+    if (register) error(valid.message, "section", mail);
   } else {
-    console.log("error");
+    error("Wrong Informations !", "section", mail);
   }
 }

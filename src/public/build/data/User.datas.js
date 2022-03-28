@@ -11,7 +11,7 @@ export function getUser(pseudo, password) {
   });
 }
 
-export async function register(email, username, password) {
+export function register(email, username, password) {
   const init = {
     method: "POST",
     body: JSON.stringify({
@@ -21,6 +21,7 @@ export async function register(email, username, password) {
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
+      "Connection": "keep-alive",
     },
   };
 

@@ -11,7 +11,8 @@ module.exports.random = async (req, res) => {
   //~ Requête pour récupérer 20 questions aléatoirement
   const questions = await Question.findAll({
     order: Sequelize.literal("random()"),
-    limit: 20,
+    limit: 5,
+    raw: true,
   });
 
   //~ Création d'un tableau contenant l'id de chaque question
@@ -21,11 +22,20 @@ module.exports.random = async (req, res) => {
   }
 
   //~ Seconde requête pour récupérer les résponses grâce à l'id question
-  const response = await Response.findAll({
+  const responses = await Response.findAll({
     where: { [Op.or]: { id_question } },
   });
-
-  res.send({ questions, response });
+  
+  const results = [];
+  for (i in questions) {
+    results.push([questions[i].question]);
+    for (b in responses) {
+      if (responses[b].id_question === questions[i].id_question) {
+        results[i].push([responses[b].response, responses[b].value]);
+      }
+    }
+  }
+  res.send({ results });
 };
 
 //* @desc Récupération des quizz lié au une catégorie précise

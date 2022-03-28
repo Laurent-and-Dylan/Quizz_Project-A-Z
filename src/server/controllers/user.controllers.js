@@ -32,8 +32,10 @@ module.exports.register = async (req, res) => {
   }
 
   //~ Requête de création d'un utilisateur
-  User.create({ username, email, password });
-  res.status(201).send({ register: true });
+
+  User.create({ username, email, password }, { returning: false }).then(() => {
+    res.status(201).send({ register: true }).end();
+  });
 };
 
 // * @desc Connexion d'un utilisateur

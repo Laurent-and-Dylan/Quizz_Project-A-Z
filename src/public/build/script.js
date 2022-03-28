@@ -1,16 +1,17 @@
 "use-strict";
 
+import * as Remover from "./utils/Remover.js";
 import { Display } from "./views/Forms.views.js";
 
 login.addEventListener("click", (e) => {
-  e.preventDefault();
+  Remover.main();
   Display.loginForm();
 });
 signUp.addEventListener("click", (e) => {
-  e.preventDefault();
+  Remover.main();
   Display.signUpForm();
 });
 guest.addEventListener("click", (e) => {
-  e.preventDefault();
+  Remover.main();
   Display.main();
 });

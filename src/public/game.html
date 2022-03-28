@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/dist/output.css" />
+    <script src="./game.js" defer></script>
+    <title>Game Quizzz</title>
+  </head>
+  <body class="bg-sky-900">
+    <header class="flex justify-between">
+      <img class="w-44" src="./styles/images/Logo.png" alt="" id="logo" />
+      <h1
+        class="absolute left-2/4 top-44 -translate-x-2/4 md:top-4 font-extrabold text-white text-3xl"
+      >
+        Quizzz N°485375
+      </h1>
+      <img src="./styles/images/Burger.svg" alt="" />
+    </header>
+    <section class="p-8">
+      <div class="flex justify-between" id="hud">
+        <h2 class="font-extrabold text-white text-3xl">
+          <span id="time"></span>s
+        </h2>
+        <h2 id="question" class="font-extrabold text-white text-3xl">
+          Question
+        </h2>
+        <h2 id="rest" class="font-extrabold text-white text-3xl"></h2>
+      </div>
+      <div id="game" class="grid grid-cols-2 grid-rows-2 h-[50vh]"></div>
+    </section>
+  </body>
+</html>

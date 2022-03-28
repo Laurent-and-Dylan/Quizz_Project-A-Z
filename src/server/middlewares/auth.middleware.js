@@ -11,7 +11,7 @@ module.exports.checkUser = (req, res, next) => {
         // ~ Si l'utilisateur possède un mauvais token, retrait de celui-ci, retrait des informations locals et redirection sur la page d'accueil
         res.locals.user = null;
         res.cookie("jwt", "", { maxAge: 0 });
-        res.redirect("/");
+        // res.redirect("/");
         next();
       } else {
         // ~ Si l'utilisateur possède un token valide

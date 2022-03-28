@@ -1,12 +1,11 @@
 "use-strict";
 
-import * as Remover from "../utils/Remover.js";
 import { header } from "../components/header.js";
 import * as Controller from "../controllers/Forms.controller.js";
 
 function form(submit, input1, input2, input3 = null) {
   const register = input3
-    ? `<input type="email" placeholder="${input3}" minlength="7" maxlength="40" class="w-80 h-8 mt-8 block mx-auto rounded-md text-xl text-center text-slate-400" id="email">`
+    ? `<input type="email" placeholder="${input3}" minlength="7" maxlength="40" class="w-80 h-8 mt-8 block mx-auto rounded-md text-xl text-center text-slate-400" id="mail">`
     : "";
 
   document.querySelector("section").innerHTML = `
@@ -19,7 +18,6 @@ function form(submit, input1, input2, input3 = null) {
 
 export const Display = {
   loginForm() {
-    Remover.main();
     header("Login Form :", "Register");
     form("LogIn", "Email / Username", "Password");
 
@@ -27,12 +25,14 @@ export const Display = {
       Controller.login(username, password);
     });
   },
+
   signUpForm() {
-    Remover.main();
     header("Register Form :", "LogIn");
     form("Register", "Username", "Password", "Email");
+
     submit.addEventListener("click", (e) => {
-      Controller.register(email, username, password);
+      e.preventDefault();
+      Controller.register(mail, username, password);
     });
   },
   main() {
