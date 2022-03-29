@@ -7,8 +7,8 @@ export const Remover = {
     document.querySelector("section > div").remove();
   },
 
-  header() {
-    document.querySelector("header > h1").remove();
-    document.querySelector("header > h2").remove();
-  },
+  // header() {
+  //   document.querySelector("header > h1").remove();
+  //   document.querySelector("header > h2").remove();
+  // },
 };
