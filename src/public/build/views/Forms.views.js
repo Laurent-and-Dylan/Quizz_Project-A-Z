@@ -1,6 +1,6 @@
 "use-strict";
 
-import { header } from "../components/header.js";
+import { Header } from "../components/header.js";
 import * as Controller from "../controllers/Forms.controller.js";
 
 function form(submit, input1, input2, input3 = null) {
@@ -18,24 +18,20 @@ function form(submit, input1, input2, input3 = null) {
 
 export const Display = {
   loginForm() {
-    header("Login Form :", "Register");
+    Header.header_1("Login Form :", "Register");
     form("LogIn", "Email / Username", "Password");
-
+    
     submit.addEventListener("click", () => {
       Controller.login(username, password);
     });
   },
 
   signUpForm() {
-    header("Register Form :", "LogIn");
+    Header.header_1("Register Form :", "LogIn");
     form("Register", "Username", "Password", "Email");
 
     submit.addEventListener("click", (e) => {
-      e.preventDefault();
       Controller.register(mail, username, password);
     });
-  },
-  main() {
-    Remover.main();
   },
 };

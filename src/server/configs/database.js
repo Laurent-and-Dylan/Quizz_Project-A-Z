@@ -11,6 +11,6 @@ const sequelize = new Sequelize({
 });
 
 sequelize.authenticate();
-sequelize.sync({ force: true });
+// sequelize.sync({});
 
 module.exports = sequelize;

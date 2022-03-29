@@ -6,6 +6,7 @@ import {
 } from "../data/User.datas.js";
 
 import { error } from "../components/error.js";
+import { accueil as Accueil } from "../views/Accueil.views.js";
 
 export async function login(param1, param2) {
   const user = param1.value;
@@ -16,7 +17,7 @@ export async function login(param1, param2) {
   const { connexion } = await GetUser(user, pass);
 
   if (!connexion) return error("Wrong Informations !", "section", username);
-  console.log("connecter");
+  Accueil();
 }
 
 export async function register(param1, param2, param3) {
@@ -26,8 +27,8 @@ export async function register(param1, param2, param3) {
 
   if (email && username && password) {
     const { register } = await Register(email[0], username[0], password[0]);
-    console.log(register);
-    if (register) error(valid.message, "section", mail);
+    if (!register) error("Informations already exist !", "section", mail);
+    else Remover.header();
   } else {
     error("Wrong Informations !", "section", mail);
   }

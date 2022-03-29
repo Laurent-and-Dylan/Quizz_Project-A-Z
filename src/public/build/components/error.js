@@ -1,7 +1,7 @@
 "use-strict";
 
 export function error(content, parent, reference) {
-  document.querySelector("span").remove();
+  if (document.querySelector("span")) document.querySelector("span").remove();
 
   const element = document.createElement("span");
   element.classList.add("text-center", "text-pink-600", "text-xl", "mt-4");

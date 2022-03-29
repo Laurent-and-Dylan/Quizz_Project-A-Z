@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const User = sequelize.define(
   "User",
   {
-    id_user: { type: DataTypes.INTEGER, primaryKey: true },
+    id_user: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     username: { type: DataTypes.STRING(30) },
     email: { type: DataTypes.STRING(100) },
     password: { type: DataTypes.STRING },
