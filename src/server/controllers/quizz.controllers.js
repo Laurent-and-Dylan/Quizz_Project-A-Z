@@ -10,8 +10,8 @@ const { verifyAuth } = require("../middlewares/auth.middleware");
 module.exports.random = async (req, res) => {
   //~ Requête pour récupérer 20 questions aléatoirement
   const questions = await Question.findAll({
-    order: Sequelize.literal("random()"),
-    limit: 5,
+    order: Sequelize.literal("rand()"),
+    limit: 20,
     raw: true,
   });
 
@@ -25,7 +25,7 @@ module.exports.random = async (req, res) => {
   const responses = await Response.findAll({
     where: { [Op.or]: { id_question } },
   });
-  
+
   const results = [];
   for (i in questions) {
     results.push([questions[i].question]);

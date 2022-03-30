@@ -20,10 +20,12 @@ app.use(checkUser);
 const UserRoutes = require("./routes/user.routes");
 const QuizzRoutes = require("./routes/quizz.routes");
 const StatRoutes = require("./routes/stat.routes");
+const CategoryRoutes = require("./routes/category.routes");
 
 app.use("/api/user", UserRoutes);
 app.use("/api/quizz", QuizzRoutes);
 app.use("/api/stat", StatRoutes);
+app.use("/api/category", CategoryRoutes);
 
 //~ On écoute l'application
 app.listen(process.env.PORT, () => {

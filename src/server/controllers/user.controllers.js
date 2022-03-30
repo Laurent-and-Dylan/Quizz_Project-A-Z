@@ -6,7 +6,7 @@ const { verifyAuth } = require("../middlewares/auth.middleware");
 // * @desc Création d'un utilisateur
 // * @route POST /api/user/register
 
-module.exports.register = async (req, res) => {
+const register = async (req, res) => {
   //^ const pseudo = req.body.pseudo
   //^ const email = req.body.email
   //^ const password = req.body.password
@@ -40,7 +40,7 @@ module.exports.register = async (req, res) => {
 // * @desc Connexion d'un utilisateur
 // * @route POST /api/user/login
 
-module.exports.login = async (req, res) => {
+const login = async (req, res) => {
   const { pseudo, password } = req.body;
 
   // ~ Requête pour récuperer les infos d'un utilisateur si l'email ou l'username correspondent plus structure de contrôle
@@ -65,7 +65,7 @@ module.exports.login = async (req, res) => {
 // * @desc Déconnexion d'un utilisateur
 // * @route GET /api/user/logout
 
-module.exports.logout = (req, res) => {
+const logout = (req, res) => {
   //~ Retrait du cookie JWT, des infos locals utilisateur et redirection sur la page d'accueil
 
   res.cookie("jwt", "", { maxAge: 0 });
@@ -76,7 +76,7 @@ module.exports.logout = (req, res) => {
 // * @desc Suppression d'un utilisateur
 // * @route POST /api/user/delete
 
-module.exports.delete = async (req, res) => {
+const deleted = async (req, res) => {
   const { password, username } = req.body;
 
   //~ Vérification de la présence du token JWT et de sa validité
@@ -104,7 +104,7 @@ module.exports.delete = async (req, res) => {
 // * @desc Mise à jour du profil utilisateur
 // * @route POST /api/user/update
 
-module.exports.updateProfile = async (req, res) => {
+const updateProfile = async (req, res) => {
   const { password, image, bio } = req.body;
 
   //~ Vérification de la présence du token JWT et de sa validité
@@ -118,4 +118,12 @@ module.exports.updateProfile = async (req, res) => {
     );
     res.status(201).send({ message: "Account succesfully edit !" });
   }
+};
+
+module.exports = {
+  login,
+  register,
+  updateProfile,
+  deleted,
+  logout,
 };
