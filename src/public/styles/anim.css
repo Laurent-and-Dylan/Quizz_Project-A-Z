@@ -1,0 +1,9 @@
+.ln1 {
+  transition: 0.5s;
+  transform: rotate(45deg) translateY(22px);
+}
+
+.ln3 {
+  transition: 0.5s;
+  transform: rotate(-45deg) translateY(-22px);
+}
