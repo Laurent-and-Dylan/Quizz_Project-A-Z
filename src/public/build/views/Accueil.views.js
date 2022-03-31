@@ -1,10 +1,12 @@
 "use-strict";
 
 import { Header } from "../components/header.js";
+import { HeaderController } from "../controllers/Headers.controllers.js";
 import { BeforeGame } from "./BeforeGame.views.js";
 
 export function Accueil() {
   Header.header_2();
+  HeaderController();
 
   document.querySelector("section").classList.remove("h-[85vh]");
   document.querySelector("section").classList.add("h-[65vh]");

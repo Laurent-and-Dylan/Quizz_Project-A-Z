@@ -43,8 +43,8 @@ export const Header = {
         <img class="w-44" src="./styles/images/Logo.png" alt="" id="logo"/>
         <nav class="h-full flex items-start m-4" id="navbar">
               <ul class="flex md:w-[40vw] justify-between">
-                <li class="text-4xl text-white font-extrabold hover:scale-110">Stats</li>
-                <li class="text-4xl text-white font-extrabold hover:scale-110">Categories</li>
+                <li class="text-4xl text-white font-extrabold hover:scale-110" id="stats">Stats</li>
+                <li class="text-4xl text-white font-extrabold hover:scale-110" id="categories">Categories</li>
                 ${displayBurger()}
               </ul>
         </nav>
@@ -56,7 +56,7 @@ export const Header = {
     header.innerHTML = `
     <img class="w-44" src="./styles/images/Logo.png" alt="" id="logo"/>
     <h1 class="text-4xl text-white font-extrabold">Quizzz n°48556</h1>
-    ${burger()}
+    ${displayBurger()}
     `;
   },
 };

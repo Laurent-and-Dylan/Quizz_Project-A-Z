@@ -753,6 +753,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 65vh;
 }
 
+.h-\[10vh\] {
+  height: 10vh;
+}
+
 .w-44 {
   width: 11rem;
 }
