@@ -11,7 +11,7 @@ module.exports.random = async (req, res) => {
   //~ Requête pour récupérer 20 questions aléatoirement
   const questions = await Question.findAll({
     order: Sequelize.literal("rand()"),
-    limit: 20,
+    limit: 1,
     raw: true,
   });
 

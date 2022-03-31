@@ -31,7 +31,7 @@ module.exports.checkUser = (req, res, next) => {
 
 //# @desc Vérification de la présence d'un id utilsateur ou d'un status administrateur dans le JWT token
 module.exports.verifyAuth = (req) => {
-  const token = req.cookies.jwt;
+  const token = req.body.token;
   if (!token) return false;
   const { id_user, status } = jwt.verify(token, process.env.SECRET_TOKEN)
     ? jwt.verify(token, process.env.SECRET_TOKEN)

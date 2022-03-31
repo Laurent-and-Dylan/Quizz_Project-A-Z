@@ -2,6 +2,7 @@ const Stat = require("../models/stat.model");
 const Quizz = require("../models/quizz.model");
 const Users = require("../models/user.model");
 const { Op } = require("sequelize");
+const { verifyAuth } = require("../middlewares/auth.middleware");
 
 //* @desc Récupérer les stats d'un quizz précis
 //* @route GET /api/stat/quizz/:id_quizz
@@ -62,4 +63,27 @@ module.exports.statOfUser = async (req, res) => {
 };
 
 //* @desc Ajouter stats d'un utilisateur
-//* @route GET /api/stat/user/:id_user
+//* @route POST /api/stat/
+
+module.exports.addStat = async (req, res) => {
+  let { id_quizz, points } = req.body;
+  const auth = verifyAuth(req);
+  if (!auth)
+    return res
+      .status(400)
+      .send({ message: "Veuillez créer un compte ou vous connecter" });
+
+  const id_user = auth[0];
+  console.log(points);
+  console.log(id_quizz);
+  console.log(id_user);
+  //~ Requête pour introduire le score dans la base de donnée
+  const stat = await Stat.create({
+    id_user,
+    id_quizz,
+    points,
+  });
+  if (!stat) return res.status(404).send(false);
+
+  res.status(200).send(true);
+};
