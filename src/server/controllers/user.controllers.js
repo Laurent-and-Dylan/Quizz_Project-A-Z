@@ -58,7 +58,7 @@ const login = async (req, res) => {
     });
 
     res.cookie("jwt", token, { httpOnly: true, maxAge });
-    return res.status(200).send({ connexion: true });
+    return res.status(200).send({ connexion: true, token: format });
   } else return res.status(400).send({ connexion: false });
 };
 

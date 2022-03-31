@@ -41,10 +41,10 @@ export const Header = {
 
     header.innerHTML = `
         <img class="w-44" src="./styles/images/Logo.png" alt="" id="logo"/>
-        <nav class="h-full flex items-start m-4" id="navbar">
-              <ul class="flex md:w-[40vw] justify-between">
-                <li class="text-4xl text-white font-extrabold hover:scale-110" id="stats">Stats</li>
-                <li class="text-4xl text-white font-extrabold hover:scale-110" id="categories">Categories</li>
+        <nav class="h-full flex m-4" id="navbar">
+              <ul class="flex md:w-[40vw] justify-end lg:justify-between">
+                <li class="text-4xl h-12 hidden lg:block text-white font-extrabold hover:scale-105 cursor-pointer" id="stats">Stats</li>
+                <li class="text-4xl h-12 hidden lg:block text-white font-extrabold hover:scale-105 cursor-pointer" id="categories">Categories</li>
                 ${displayBurger()}
               </ul>
         </nav>

@@ -17,6 +17,7 @@ export async function login(param1, param2) {
   const { connexion } = await GetUser(user, pass);
 
   if (!connexion) return error("Wrong Informations !", "section", username);
+
   Accueil();
 }
 

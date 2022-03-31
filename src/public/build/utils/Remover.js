@@ -6,9 +6,4 @@ export const Remover = {
     guest.remove();
     document.querySelector("section > div").remove();
   },
-
-  // header() {
-  //   document.querySelector("header > h1").remove();
-  //   document.querySelector("header > h2").remove();
-  // },
 };
