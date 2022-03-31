@@ -1,5 +1,5 @@
 import { Display } from "../views/Forms.views.js";
-import { burger } from "./burger.js";
+import { animBurger, displayBurger } from "./burger.js";
 
 const header = document.querySelector("header");
 
@@ -43,16 +43,13 @@ export const Header = {
         <img class="w-44" src="./styles/images/Logo.png" alt="" id="logo"/>
         <nav class="h-full flex items-start m-4" id="navbar">
               <ul class="flex md:w-[40vw] justify-between">
-                <li>
-                  <a class="text-4xl text-white font-extrabold hover:scale-110" href="">Stats</a>
-                </li>
-                <li>
-                  <a class="text-4xl text-white font-extrabold hover:scale-110" href="">Categories</a>
-                </li>
-                ${burger()}
+                <li class="text-4xl text-white font-extrabold hover:scale-110">Stats</li>
+                <li class="text-4xl text-white font-extrabold hover:scale-110">Categories</li>
+                ${displayBurger()}
               </ul>
         </nav>
       `;
+    animBurger();
   },
 
   header_3() {

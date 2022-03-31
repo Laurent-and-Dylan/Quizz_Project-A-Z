@@ -401,6 +401,7 @@ embed,
 object {
   display: block;
   /* 1 */
+  vertical-align: middle;
   /* 2 */
 }
 
@@ -788,7 +789,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 3rem;
 }
 
-
+.w-\[\] {
+  width: ;
+}
 
 .w-\[10v\] {
   width: 10v;
