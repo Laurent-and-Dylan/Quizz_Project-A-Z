@@ -51,14 +51,13 @@ const login = async (req, res) => {
 
   //~ Vérification de la coherence des passwords et création d'un token web sous format JSON placé dans un cookie
   if (user.validPassword(password, user.dataValues.password)) {
-    const maxAge = 3 * 60 * 60 * 24 * 1000;
+    let date = new Date();
+    date.setDate(date.getDate() + 1);
     const { id_user, status } = user;
-    const token = jwt.sign({ id_user, status }, process.env.SECRET_TOKEN, {
-      expiresIn: maxAge,
-    });
+    let token = jwt.sign({ id_user, status }, process.env.SECRET_TOKEN);
 
-    res.cookie("jwt", token, { httpOnly: true, maxAge });
-    return res.status(200).send({ connexion: true, token: format });
+    token = `jwt=${token}; Expires=${date};`;
+    return res.status(200).send({ connexion: true, token });
   } else return res.status(400).send({ connexion: false });
 };
 

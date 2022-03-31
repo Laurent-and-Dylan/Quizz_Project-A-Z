@@ -14,9 +14,11 @@ export async function displayResponses() {
     );
 
     game.innerHTML += `
-    <h1 class="responses text-xl text-white text-center" id="${index}">${
+    <article class="responses flex items-center justify-center bg-white rounded-lg" >
+      <h1 class="responses w-full h-full text-xl text-pink-500 text-center py-8 font-bold rounded-lg" id="${index}"/>${
       results[left.textContent - 1][i][0]
     }</h1>
+    </article>
     `;
   }
 
@@ -29,6 +31,7 @@ export async function displayResponses() {
             points();
           } else if (!valid) {
             res.style.background = "red";
+            res.style.color = "white";
             valid = true;
           }
         }
@@ -38,7 +41,7 @@ export async function displayResponses() {
   });
 }
 
-function goodResponse() {
+export function goodResponse() {
   const results = JSON.parse(localStorage.getItem("Quizz"));
   for (let g in results[left.textContent - 1]) {
     if (results[left.textContent - 1][g][1] === true) {
@@ -46,6 +49,7 @@ function goodResponse() {
         results[left.textContent - 1][g]
       );
       document.getElementById(`${right}`).style.background = "green";
+      document.getElementById(`${right}`).style.color = "white";
     }
   }
 }

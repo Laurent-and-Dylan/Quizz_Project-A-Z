@@ -1,3 +1,5 @@
+"use-strict";
+
 export function getUser(pseudo, password) {
   const init = {
     method: "POST",

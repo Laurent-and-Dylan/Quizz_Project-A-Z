@@ -2,7 +2,7 @@
 
 import { EndGame } from "../views/EndGame.views.js";
 import { nextQuestion } from "./question.js";
-import { valid } from "./responses.js";
+import { valid, goodResponse } from "./responses.js";
 
 export function timer() {
   const seconds = setInterval(() => {
@@ -11,8 +11,11 @@ export function timer() {
 
     if ((temps && !allQuestion) || (valid && !allQuestion)) {
       clearInterval(seconds);
-      nextQuestion();
-      timer();
+      goodResponse();
+      setTimeout(() => {
+        nextQuestion();
+        timer();
+      }, 2000);
     } else if ((temps && allQuestion) || (valid && allQuestion)) {
       clearInterval(seconds);
       EndGame();

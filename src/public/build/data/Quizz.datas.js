@@ -12,7 +12,6 @@ export async function GetQuizz() {
       results[i] = await Randomize_Array(results[i]);
     }
     localStorage.setItem("Quizz", JSON.stringify(results));
-    console.log(results);
   }
   // ! Ne pas oublier de gerer l'erreur
   else return false;
