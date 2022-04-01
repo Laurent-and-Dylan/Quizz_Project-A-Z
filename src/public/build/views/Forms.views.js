@@ -20,7 +20,7 @@ export const Display = {
   loginForm() {
     Header.header_1("Login Form :", "Register");
     form("LogIn", "Email / Username", "Password");
-    
+
     submit.addEventListener("click", () => {
       Controller.login(username, password);
     });
@@ -30,7 +30,7 @@ export const Display = {
     Header.header_1("Register Form :", "LogIn");
     form("Register", "Username", "Password", "Email");
 
-    submit.addEventListener("click", (e) => {
+    submit.addEventListener("click", () => {
       Controller.register(mail, username, password);
     });
   },

@@ -6,7 +6,7 @@ import { BeforeGame } from "./BeforeGame.views.js";
 
 export async function Accueil(username = null) {
   await Header.header_2(username);
-  HeaderController();
+  HeaderController(username);
 
   document.querySelector("section").classList.remove("h-[85vh]");
   document.querySelector("section").classList.add("h-[65vh]");

@@ -33,8 +33,11 @@ const register = async (req, res) => {
 
   //~ Requête de création d'un utilisateur
 
-  User.create({ username, email, password }, { returning: false });
-  res.status(201).send({ register: true }).end();
+  const { id_user, status } = await User.create({ username, email, password });
+
+  let token = jwt.sign({ id_user, status }, process.env.SECRET_TOKEN);
+
+  res.status(201).send({ register: true, username, token, id_user });
 };
 
 // * @desc Connexion d'un utilisateur

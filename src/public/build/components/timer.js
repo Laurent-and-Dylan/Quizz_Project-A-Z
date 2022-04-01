@@ -6,8 +6,15 @@ import { valid, goodResponse } from "./responses.js";
 
 export function timer() {
   const seconds = setInterval(() => {
-    const temps = time.textContent == 0;
-    const allQuestion = left.textContent == total.textContent;
+    const play = document.getElementById("play");
+    const time = document.getElementById("time");
+    const left = document.getElementById("left");
+
+    let temps;
+    let allQuestion;
+
+    if (time) temps = time.textContent == 0;
+    if (left) allQuestion = left.textContent == total.textContent;
 
     if ((temps && !allQuestion) || (valid && !allQuestion)) {
       clearInterval(seconds);
@@ -19,6 +26,8 @@ export function timer() {
     } else if ((temps && allQuestion) || (valid && allQuestion)) {
       clearInterval(seconds);
       EndGame();
+    } else if (play != null) {
+      clearInterval(seconds);
     } else {
       time.textContent--;
     }

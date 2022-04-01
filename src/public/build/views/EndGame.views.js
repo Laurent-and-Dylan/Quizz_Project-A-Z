@@ -6,13 +6,6 @@ import { Accueil } from "../views/Accueil.views.js";
 
 export function EndGame() {
   const score = localStorage.getItem("score");
-  const home = document.createElement("img");
-
-  home.src = "styles/images/Home.png";
-  home.classList.add("w-14", "h-14", "ml-8", "mr-auto");
-  home.setAttribute("id", "home");
-
-  document.querySelector("header").insertBefore(home, name_quizz);
 
   document.querySelector("section").innerHTML = `
         <h2 class="text-4xl font-bold text-center text-orange-500">THANKS FOR PLAYING</h2>

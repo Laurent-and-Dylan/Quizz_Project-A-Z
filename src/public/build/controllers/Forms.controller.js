@@ -30,9 +30,19 @@ export async function register(param1, param2, param3) {
   const password = param3.value.match(/^[\S]{8,150}$/);
 
   if (email && username && password) {
-    const { register } = await Register(email[0], username[0], password[0]);
+    const { register, token, id_user } = await Register(
+      email[0],
+      username[0],
+      password[0]
+    );
+
+    console.log(id_user);
     if (!register) error("Informations already exist !", "section", mail);
-    else Accueil();
+    else {
+      localStorage.setItem("jwt", token);
+      localStorage.setItem("user", id_user);
+      Accueil(username);
+    }
   } else {
     error("Wrong Informations !", "section", mail);
   }

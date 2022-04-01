@@ -9,6 +9,7 @@ export function BeforeGame(username) {
   localStorage.setItem("score", "0");
 
   Header.header_3(username);
+
   section.classList.add("text-center");
   section.innerHTML = `
     <span class="text-8xl text-white font-bold" id="timer">1</span>

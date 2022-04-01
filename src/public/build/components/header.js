@@ -1,3 +1,6 @@
+"use-strict";
+
+import { HeaderController } from "../controllers/Headers.controllers.js";
 import { Display } from "../views/Forms.views.js";
 import { animBurger, displayBurger } from "./burger.js";
 
@@ -13,7 +16,7 @@ export const Header = {
       "h-[30vh]"
     );
     header.innerHTML = `
-      <img class="w-44" src="./styles/images/Logo.png" alt="" id="logo"/>
+      <img class="w-44 cursor-pointer" src="./styles/images/Logo.png" alt="" id="logo"/>
       <h1 class="absolute left-2/4 top-44 -translate-x-2/4 md:top-4 font-extrabold text-white text-3xl">${h1}</h1>
       <h2 class="font-extrabold text-white text-3xl cursor-pointer" id="${h2}">${h2}</h2>
   `;
@@ -40,7 +43,7 @@ export const Header = {
     );
 
     header.innerHTML = `
-        <img class="w-44" src="./styles/images/Logo.png" alt="" id="logo"/>
+        <img class="w-44 cursor-pointer" src="./styles/images/Logo.png" alt="" id="logo"/>
         <nav class="h-full flex m-4" id="navbar">
               <ul class="flex md:w-[40vw] justify-end lg:justify-between">
                 <li class="stats text-4xl h-12 hidden lg:block text-white font-extrabold hover:scale-105 cursor-pointer" >Stats</li>
@@ -50,15 +53,17 @@ export const Header = {
         </nav>
       `;
     animBurger();
+    HeaderController();
   },
 
   header_3(username) {
     header.innerHTML = `
-    <img class="w-44" src="./styles/images/Logo.png" alt="" id="logo"/>
+    <img class="w-44 cursor-pointer" src="./styles/images/Logo.png" alt="" id="logo"/>
     <h1 class="text-4xl text-white font-extrabold" id="name_quizz">Quizzz n°48556</h1>
     ${displayBurger(username)}
     `;
 
     animBurger();
+    HeaderController(username);
   },
 };
