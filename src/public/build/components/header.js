@@ -58,7 +58,7 @@ export const Header = {
     <h1 class="text-4xl text-white font-extrabold">Quizzz n°48556</h1>
     ${displayBurger()}
     `;
-
+    
     animBurger();
   },
 };

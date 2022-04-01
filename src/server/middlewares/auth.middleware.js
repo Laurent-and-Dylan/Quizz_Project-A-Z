@@ -4,14 +4,14 @@ const User = require("../models/user.model.js");
 //# @desc Middleware d'authentification grâce au JWT fourni à la connexion de l'utilisateur
 //! Possibilité d'amélioratiion
 module.exports.checkUser = (req, res, next) => {
-  const token = req.cookies.jwt;
+  const { token } = req.body;
+
   if (token) {
     jwt.verify(token, process.env.SECRET_TOKEN, async (err, decodedToken) => {
       if (err) {
         // ~ Si l'utilisateur possède un mauvais token, retrait de celui-ci, retrait des informations locals et redirection sur la page d'accueil
         res.locals.user = null;
         res.cookie("jwt", "", { maxAge: 0 });
-        // res.redirect("/");
         next();
       } else {
         // ~ Si l'utilisateur possède un token valide

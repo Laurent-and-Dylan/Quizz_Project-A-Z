@@ -14,12 +14,13 @@ export async function login(param1, param2) {
 
   if (!user || !pass) return alert("Veuillez remplir tout les champs");
 
-  const { connexion, token } = await GetUser(user, pass);
+  const { connexion, token, username, id_user } = await GetUser(user, pass);
 
-  document.cookie = `${token}`;
   if (!connexion) return error("Wrong Informations !", "section", username);
+  document.cookie = `${token}`;
+  sessionStorage.setItem("user", id_user);
 
-  Accueil();
+  Accueil(username);
 }
 
 export async function register(param1, param2, param3) {

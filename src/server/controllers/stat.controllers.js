@@ -1,4 +1,4 @@
-const Stat = require("../models/stat.model");
+const Stats = require("../models/stat.model");
 const Quizz = require("../models/quizz.model");
 const Users = require("../models/user.model");
 const { Op } = require("sequelize");
@@ -18,7 +18,7 @@ module.exports.statOfQuizz = async (req, res) => {
   if (!quizz) return res.status(404).send({ message: "Quizz inconnu !" });
 
   //~ Requête récupérant les stats grâce à l'id du quizz
-  const stats = await Stat.findAll({
+  const stats = await Stats.findAll({
     attributes: ["id_user", "points", "date"],
     where: { id_quizz },
   });
@@ -42,6 +42,9 @@ module.exports.statOfQuizz = async (req, res) => {
 //* @route GET /api/stat/user/:id_user
 
 module.exports.statOfUser = async (req, res) => {
+  Quizz.hasMany(Stats);
+  Stats.belongsTo(Quizz, { foreignKey: "id_quizz" });
+
   const { id_user } = req.params;
 
   //~ Requête récupérant les informations de l'utilisqateur plus structure de contrôle
@@ -49,16 +52,24 @@ module.exports.statOfUser = async (req, res) => {
     attributes: ["username", "image"],
     where: { id_user },
   });
+
   if (!user) return res.status(404).send({ message: "Utilisateur inconnu !" });
 
   //~ Requête récupérant les stats grâce à l'id du quizz
   // ! Possibilité d'optimisation...
-  const stats = await Stat.findAll({
+  const stats = await Stats.findAll({
     order: [["points", "DESC"]],
-    attributes: ["id_quizz", "points", "date"],
+    attributes: ["points", "date"],
     where: { id_user },
+    include: [
+      {
+        model: Quizz,
+        as: "Quizz",
+        attributes: ["name"],
+      },
+    ],
   });
-
+  
   res.status(200).send({ user, stats });
 };
 
@@ -74,15 +85,14 @@ module.exports.addStat = async (req, res) => {
       .send({ message: "Veuillez créer un compte ou vous connecter" });
 
   const id_user = auth[0];
-  console.log(points);
-  console.log(id_quizz);
-  console.log(id_user);
+
   //~ Requête pour introduire le score dans la base de donnée
-  const stat = await Stat.create({
+  const stat = await Stats.create({
     id_user,
     id_quizz,
     points,
   });
+
   if (!stat) return res.status(404).send(false);
 
   res.status(200).send(true);

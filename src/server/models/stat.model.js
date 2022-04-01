@@ -15,7 +15,21 @@ const Stats = sequelize.define(
     points: { type: DataTypes.INTEGER },
     date: { type: DataTypes.DATE },
   },
-  { tableName: "stats", freezeTableName: true, timestamps: false }
+  {
+    tableName: "stats",
+    freezeTableName: true,
+    timestamps: false,
+    hooks: {
+      beforeCreate(stat) {
+        let date = Date.now();
+        console.log(date);
+        let today = new Date(date);
+        today = today.toLocaleDateString();
+
+        stat.date = today;
+      },
+    },
+  }
 );
 
 module.exports = Stats;

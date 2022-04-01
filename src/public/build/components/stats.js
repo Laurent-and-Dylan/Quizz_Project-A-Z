@@ -9,11 +9,11 @@ export const user = {
             <h2 class="2xl:w-1/6 md:w-1/2">Date</h2>
         </article>`;
   },
-  result() {
-      return `<article class="flex justify-around text-white text-center">
-      <h2 class="2xl:w-1/6 md:w-1/2 text-3xl font-bold">1</h2>
-      <h3 class="2xl:w-1/6 md:w-1/2 text-2xl font-bold">2</h3>
-      <h3 class="2xl:w-1/6 md:w-1/2 text-2xl font-bold">3</h3>
+  result(name, points, date) {
+    return `<article class="flex justify-around text-white text-center">
+      <h2 class="2xl:w-1/6 md:w-1/2 text-3xl font-bold">${name}</h2>
+      <h3 class="2xl:w-1/6 md:w-1/2 text-2xl font-bold">${points}</h3>
+      <h3 class="2xl:w-1/6 md:w-1/2 text-2xl font-bold">${date}</h3>
     </article>`;
-  }
+  },
 };
