@@ -6,17 +6,16 @@ export function makeHUD() {
   const section = document.querySelector("section");
   const results = JSON.parse(localStorage.getItem("Quizz"));
 
-  section.classList.add("p-8", "min-h-full");
-  // section.classList.remove("h-[65vh]");
+  section.classList.add("px-8", "my-16", "min-h-full");
   section.innerHTML = `
-    <div class="flex justify-between mt-4" id="hud">
-      <h2 class="w-[10vw] font-extrabold text-white text-3xl">
+    <div class="grid grid-cols-3 grid-rows-2 md:flex md:justify-between mt-4" id="hud">
+      <h2 class="w-full h-min md:w-[15vh] py-6 md:py-0 font-extrabold text-white text-2xl lg:text-3xl">
         <span id="time">20</span> s
       </h2>
-      <h2 id="question" class="w-[60vw] font-extrabold text-amber-500 text-2xl">Question</h2>
-      <h2 id="rest" class="w-[15vw] font-extrabold text-white text-3xl"></h2>
+      <h2 class="row-start-2 col-start-1 col-end-4 md:w-[60vw] pt-1 font-extrabold text-amber-500 text-xl" id="question">Question</h2>
+      <h2 class="row-start-1 col-start-3 w-full h-min md:w-[20vh] py-6 md:py-0 font-extrabold text-white text-2xl lg:text-3xl" id="rest"></h2>
     </div>
-    <div id="game" class="h-[50vh] grid grid-cols-2 grid-rows-2 gap-8 mt-8"></div>
+    <div id="game" class="h-min md:h-[50vh] flex flex-col md:grid md:grid-cols-2 md:grid-rows-2 md:gap-8"></div>
   `;
 
   rest.innerHTML = `<span id="left">0</span> / <span id="total"></span>`;

@@ -16,9 +16,9 @@ export const Header = {
       "h-[30vh]"
     );
     header.innerHTML = `
-      <img class="w-44 cursor-pointer" src="./styles/images/Logo.png" alt="" id="logo"/>
+      <img class="w-44 m-4 cursor-pointer" src="./styles/images/Logo.png" alt="" id="logo"/>
       <h1 class="absolute left-2/4 top-44 -translate-x-2/4 md:top-4 font-extrabold text-white text-3xl">${h1}</h1>
-      <h2 class="font-extrabold text-white text-3xl cursor-pointer" id="${h2}">${h2}</h2>
+      <h2 class="mt-4 font-extrabold text-white text-3xl cursor-pointer" id="${h2}">${h2}</h2>
   `;
     document.querySelector("section").classList.remove("h-[85vh]");
     document.querySelector("section").classList.add("h-[55vh]");
@@ -59,7 +59,7 @@ export const Header = {
   header_3(username) {
     header.innerHTML = `
     <img class="w-44 cursor-pointer" src="./styles/images/Logo.png" alt="" id="logo"/>
-    <h1 class="text-4xl text-white font-extrabold" id="name_quizz">Quizzz n°48556</h1>
+    <h1 class="absolute left-2/3 top-20 text-xl md:relative md:top-0 md:left-0 md:text-3xl text-center text-white font-extrabold" id="name_quizz">Quizzz<br>n°48556</h1>
     ${displayBurger(username)}
     `;
 
