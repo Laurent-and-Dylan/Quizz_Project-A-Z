@@ -54,15 +54,12 @@ const login = async (req, res) => {
     const { id_user, status } = user;
     let token = jwt.sign({ id_user, status }, process.env.SECRET_TOKEN);
 
-    token = `jwt=${token}`;
-    return res
-      .status(200)
-      .send({
-        connexion: true,
-        token,
-        username: user.username,
-        id_user: user.id_user,
-      });
+    return res.status(200).send({
+      connexion: true,
+      token,
+      username: user.username,
+      id_user: user.id_user,
+    });
   } else return res.status(400).send({ connexion: false });
 };
 
@@ -123,6 +120,18 @@ const updateProfile = async (req, res) => {
     res.status(201).send({ message: "Account succesfully edit !" });
   }
 };
+async function alreadyLog(req, res) {
+  const { id_user } = req.body;
+  const auth = verifyAuth(req);
+
+  if (id_user == auth[0]) {
+    const { username } = await User.findOne({
+      where: { id_user },
+      attributes: ["username"],
+    });
+    res.status(200).send({ connected: true, username });
+  } else res.status(400).send(false);
+}
 
 module.exports = {
   login,
@@ -130,4 +139,5 @@ module.exports = {
   updateProfile,
   deleted,
   logout,
+  alreadyLog,
 };

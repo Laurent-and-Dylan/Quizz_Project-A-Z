@@ -29,7 +29,7 @@ export const Header = {
     });
   },
 
-  header_2() {
+  async header_2(username = null) {
     header.classList.add(
       "flex",
       "items-start",
@@ -43,22 +43,22 @@ export const Header = {
         <img class="w-44" src="./styles/images/Logo.png" alt="" id="logo"/>
         <nav class="h-full flex m-4" id="navbar">
               <ul class="flex md:w-[40vw] justify-end lg:justify-between">
-                <li class="text-4xl h-12 hidden lg:block text-white font-extrabold hover:scale-105 cursor-pointer" id="stats">Stats</li>
-                <li class="text-4xl h-12 hidden lg:block text-white font-extrabold hover:scale-105 cursor-pointer" id="categories">Categories</li>
-                ${displayBurger()}
+                <li class="stats text-4xl h-12 hidden lg:block text-white font-extrabold hover:scale-105 cursor-pointer" >Stats</li>
+                <li class="categories text-4xl h-12 hidden lg:block text-white font-extrabold hover:scale-105 cursor-pointer" >Categories</li>
+                ${displayBurger(username)}
               </ul>
         </nav>
       `;
     animBurger();
   },
 
-  header_3() {
+  header_3(username) {
     header.innerHTML = `
     <img class="w-44" src="./styles/images/Logo.png" alt="" id="logo"/>
-    <h1 class="text-4xl text-white font-extrabold">Quizzz n°48556</h1>
-    ${displayBurger()}
+    <h1 class="text-4xl text-white font-extrabold" id="name_quizz">Quizzz n°48556</h1>
+    ${displayBurger(username)}
     `;
-    
+
     animBurger();
   },
 };

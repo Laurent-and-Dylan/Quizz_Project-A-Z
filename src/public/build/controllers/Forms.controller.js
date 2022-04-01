@@ -17,8 +17,9 @@ export async function login(param1, param2) {
   const { connexion, token, username, id_user } = await GetUser(user, pass);
 
   if (!connexion) return error("Wrong Informations !", "section", username);
-  document.cookie = `${token}`;
-  sessionStorage.setItem("user", id_user);
+
+  localStorage.setItem("jwt", token);
+  localStorage.setItem("user", id_user);
 
   Accueil(username);
 }

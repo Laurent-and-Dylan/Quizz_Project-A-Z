@@ -1,6 +1,6 @@
 "use-strict";
 
-import { points } from "../utils/Points.js";
+import { points } from "./points.js";
 export let valid = false;
 
 export async function displayResponses() {

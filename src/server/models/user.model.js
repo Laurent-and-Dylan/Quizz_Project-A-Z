@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 
 //~ Définition du modéle user
 const User = sequelize.define(
-  "User",
+  "Users",
   {
     id_user: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     username: { type: DataTypes.STRING(30) },
@@ -17,6 +17,7 @@ const User = sequelize.define(
   },
   {
     tableName: "users",
+    freezeTableName: true,
     timestamps: false,
     hooks: {
       //~ Function de hashage des mots de passes obligatoire avant tout enregistrement dans la table users

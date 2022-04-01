@@ -6,13 +6,13 @@ import { makeHUD } from "../components/hud.js";
 import { Header } from "../components/header.js";
 import { GameController } from "../controllers/Game.controller.js";
 
-function displayGame() {
-  Header.header_3();
+function displayGame(username) {
+  Header.header_3(username);
   makeHUD();
 }
 
-export async function Game() {
+export async function Game(username) {
   await GetQuizz();
-  displayGame();
+  displayGame(username);
   GameController();
 }

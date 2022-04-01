@@ -5,13 +5,14 @@ import { getAllQuizz } from "../data/Stats.datas.js";
 
 export async function Stats() {
   const { stats } = await getAllQuizz();
+
   document.querySelector("section").innerHTML = `
-  ${Display.user.title()}
+    ${Display.user.title()}
   `;
 
   for (let s in stats) {
     document.querySelector("section").innerHTML += `
-    ${Display.user.result(stats[s].Quizz.name, stats[s].points, stats[s].date)}
+      ${Display.user.result(stats[s].Quizz.name, stats[s].points, stats[s].date)}
     `;
   }
 }

@@ -12,8 +12,8 @@ const Stats = sequelize.define(
     },
     id_user: { type: DataTypes.INTEGER },
     id_quizz: { type: DataTypes.INTEGER },
-    points: { type: DataTypes.INTEGER },
-    date: { type: DataTypes.DATE },
+    points: { type: DataTypes.INTEGER, defaultValue: 0 },
+    date: { type: DataTypes.STRING(12) },
   },
   {
     tableName: "stats",
@@ -22,7 +22,6 @@ const Stats = sequelize.define(
     hooks: {
       beforeCreate(stat) {
         let date = Date.now();
-        console.log(date);
         let today = new Date(date);
         today = today.toLocaleDateString();
 

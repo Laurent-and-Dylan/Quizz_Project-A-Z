@@ -3,6 +3,9 @@
 import { Remover } from "./utils/Remover.js";
 import { Display as Forms } from "./views/Forms.views.js";
 import { Accueil } from "./views/Accueil.views.js";
+import { reconnect } from "./utils/Reconnect.js";
+
+reconnect();
 
 login.addEventListener("click", (e) => {
   Remover.main();

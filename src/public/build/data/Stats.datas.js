@@ -1,6 +1,7 @@
 "use-strict";
 
 export function createStat(token, id_quizz, points) {
+
   const init = {
     method: "POST",
     headers: {
@@ -11,9 +12,9 @@ export function createStat(token, id_quizz, points) {
   return fetch("http://127.0.0.1:3000/api/stat/", init);
 }
 
-export function getAllQuizz() {
-  const token = document.cookie.split("=")[1];
-  const id_user = sessionStorage.getItem("user");
+export async function getAllQuizz() {
+  const token = localStorage.getItem("jwt");
+  const id_user = localStorage.getItem("user");
 
   const init = {
     method: "POST",
@@ -23,9 +24,9 @@ export function getAllQuizz() {
     body: JSON.stringify({ token }),
   };
 
-  return fetch(`http://127.0.0.1:3000/api/stat/user/${id_user}`, init).then(
-    (res) => {
-      return res.json();
-    }
+  const res = await fetch(
+    `http://127.0.0.1:3000/api/stat/user/${id_user}`,
+    init
   );
+  return await res.json();
 }
