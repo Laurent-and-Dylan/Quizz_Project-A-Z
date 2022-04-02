@@ -4,11 +4,11 @@ import { GetAllQuizz } from "../data/Quizz.datas.js";
 import { Quizz } from "../views/Quizz.views.js";
 
 export function CategoryController() {
-  const categories = document.querySelectorAll(".category");
+  const categories = document.querySelectorAll("[data-category]");
 
   categories.forEach((category) => {
     category.addEventListener("click", async (e) => {
-      const results = await GetAllQuizz(e.target.id);
+      const results = await GetAllQuizz(e.target.dataset.category);
 
       Quizz(results);
     });

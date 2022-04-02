@@ -1,6 +1,6 @@
 import { Randomize_Array } from "../utils/Randomize_Array.js";
 
-export async function GetQuizz() {
+export async function GetRandomQuizz() {
   const { results } = await fetch(
     "http://127.0.0.1:3000/api/quizz/random"
   ).then((res) => {
@@ -18,12 +18,23 @@ export async function GetQuizz() {
 }
 
 export async function GetAllQuizz(category) {
-  const results = await fetch(
+  const { results } = await fetch(
     `http://127.0.0.1:3000/api/quizz/category/${category}`
   ).then((res) => {
     return res.json();
   });
 
   if (results) return results;
+  else return false;
+}
+
+export async function GetQuizz(quizz) {
+  const result = await fetch(`http://127.0.0.1:3000/api/quizz/${quizz}`).then(
+    (res) => {
+      return res.json();
+    }
+  );
+
+  if (result) return result;
   else return false;
 }

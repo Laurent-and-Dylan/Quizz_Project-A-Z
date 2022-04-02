@@ -1,7 +1,18 @@
 "use-strict";
 
-import { Container } from "../components/container";
+import { Container } from "../components/container.js";
+import { quizz } from "../components/quizz.js";
+import { QuizzController } from "../controllers/Quizz.controller.js";
 
-export function Quizz(quizz) {
-  Container.quizz(quizz);
+export async function Quizz(results) {
+  const section = document.querySelector("section");
+
+  section.innerHTML = "";
+  Container.quizz();
+
+  for (let i = 0; i < 10; i++) {
+    quizz(results[0]);
+  }
+
+  QuizzController();
 }

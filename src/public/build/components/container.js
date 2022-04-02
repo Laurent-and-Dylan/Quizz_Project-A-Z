@@ -41,7 +41,17 @@ export const Container = {
     const container = this.Base();
 
     container.innerHTML = `
-      <h1 class="text-2xl font-extrabold text-center text-orange-500">CHOOSE A CATEGORY THEN SELECT QUIZZ</h1>
+      <h1 class="text-2xl font-extrabold text-center text-orange-500">SELECT QUIZZ</h1>
     `;
+
+    const subContainer = this.SubContainer();
+
+    subContainer.classList.add(
+      "grid",
+      "grid-cols-3",
+      "gap-8",
+      "my-10",
+      "justify-items-center"
+    );
   },
 };

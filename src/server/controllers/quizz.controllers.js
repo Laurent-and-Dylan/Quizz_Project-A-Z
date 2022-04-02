@@ -45,11 +45,11 @@ module.exports.quizzOfCategory = async (req, res) => {
   const { id_category } = req.params;
 
   //~ Requête pour récupérer les quizz lié à une catégorie, plus structure de contrôle
-  const results = await Quizz.findAll({ where: { id_category } });
+  const results = await Quizz.findAll({ where: { id_category }, raw: true });
   if (results.length === 0)
-    return res.status(404).send({ message: "Category or quizz unknow" });
+    return res.status(404).send({ ressult: "Category or quizz unknow" });
 
-  res.status(200).send(results);
+  res.status(200).send({ results });
 };
 
 //* @desc Récupération d'un quizz précis
@@ -59,19 +59,20 @@ module.exports.getQuizz = async (req, res) => {
   const { id_quizz } = req.params;
 
   //~ Requête récupérant le quizz par son id
-  const quizz = await Quizz.findOne({ where: { id_quizz } });
+  const quizz = await Quizz.findOne({ where: { id_quizz }, raw: true });
   if (!quizz) return res.status(404).send("Quizz inconnu !");
 
   //~ Requête pour récupéré les questions liées au quizz
   const questions = await Question.findAll({
     attributes: ["id_question", "question"],
-    where: { id_quizz: quizz.dataValues.id_quizz },
+    where: { id_quizz: quizz.id_quizz },
+    raw: true,
   });
 
   //~ Récupération de l'id de chaque question
   let id_question = [];
   for (i in questions) {
-    id_question.push(questions[i].dataValues.id_question);
+    id_question.push(questions[i].id_question);
   }
 
   //~ Requête pour récupérer les réponses de chaque question
