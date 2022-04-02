@@ -22,7 +22,7 @@ const QuizzRoutes = require("./routes/quizz.routes");
 const StatRoutes = require("./routes/stat.routes");
 const CategoryRoutes = require("./routes/category.routes");
 
-app.use("/api/user", UserRoutes);
+app.use("/api/user" ,UserRoutes);
 app.use("/api/quizz", QuizzRoutes);
 app.use("/api/stat", StatRoutes);
 app.use("/api/category", CategoryRoutes);
