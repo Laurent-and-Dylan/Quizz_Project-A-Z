@@ -912,6 +912,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 7vh;
 }
 
+.h-\[65-vh\] {
+  height: 65 - vh;
+}
+
 .min-h-\[65vh\] {
   min-height: 65vh;
 }

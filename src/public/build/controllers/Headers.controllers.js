@@ -3,8 +3,10 @@
 import { Accueil } from "../views/Accueil.views.js";
 import { Stats } from "../views/Stats.views.js";
 import { Categories } from "../views/Categories.views.js";
+import { Authentifier } from "../data/Authentifier.js";
 
-export function HeaderController(username = null) {
+export function HeaderController() {
+  const { username } = Authentifier();
   const categories = document.querySelectorAll(".categories");
   const stats = document.querySelectorAll(".stats");
 

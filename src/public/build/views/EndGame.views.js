@@ -6,6 +6,7 @@ import { Accueil } from "../views/Accueil.views.js";
 
 export function EndGame() {
   const score = localStorage.getItem("score");
+  localStorage.removeItem("Quizz");
 
   document.querySelector("section").innerHTML = `
         <h2 class="text-4xl font-bold text-center text-orange-500">THANKS FOR PLAYING</h2>

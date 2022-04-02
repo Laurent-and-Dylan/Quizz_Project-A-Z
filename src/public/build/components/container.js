@@ -54,4 +54,20 @@ export const Container = {
       "justify-items-center"
     );
   },
+  beforeGame() {
+    const container = this.Base();
+
+    container.classList.add(
+      "relative",
+      "h-[65vh]",
+      "flex",
+      "flex-col",
+      "text-center",
+      "justify-evenly"
+    );
+    container.innerHTML = `
+      <span class="text-8xl text-white font-bold" id="timer">1</span>
+      <h1 class="text-4xl text-pink-700 font-bold">Let's Play !</h1>
+    `;
+  },
 };

@@ -123,6 +123,7 @@ const updateProfile = async (req, res) => {
     res.status(201).send({ message: "Account succesfully edit !" });
   }
 };
+
 async function alreadyLog(req, res) {
   const { id_user } = req.body;
   const auth = verifyAuth(req);

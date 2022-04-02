@@ -9,7 +9,7 @@ export async function GetRandomQuizz() {
 
   if (results) {
     for (let i in results) {
-      results[i] = await Randomize_Array(results[i]);
+      results[1][i] = await Randomize_Array(results[1][i]);
     }
     localStorage.setItem("Quizz", JSON.stringify(results));
   }
@@ -29,12 +29,16 @@ export async function GetAllQuizz(category) {
 }
 
 export async function GetQuizz(quizz) {
-  const result = await fetch(`http://127.0.0.1:3000/api/quizz/${quizz}`).then(
-    (res) => {
-      return res.json();
-    }
-  );
+  const { results } = await fetch(
+    `http://127.0.0.1:3000/api/quizz/${quizz}`
+  ).then((res) => {
+    return res.json();
+  });
 
-  if (result) return result;
-  else return false;
+  if (results) {
+    for (let i in results[1]) {
+      results[1][i] = await Randomize_Array(results[1][i]);
+    }
+    localStorage.setItem("Quizz", JSON.stringify(results));
+  } else return false;
 }

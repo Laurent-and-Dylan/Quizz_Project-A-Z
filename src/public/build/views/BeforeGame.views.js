@@ -1,25 +1,32 @@
 "use-strict";
 
+import { Container } from "../components/container.js";
 import { Header } from "../components/header.js";
+import { GetRandomQuizz } from "../data/Quizz.datas.js";
 import { Game } from "./Game.views.js";
 
-const section = document.querySelector("section");
+export async function BeforeGame() {
+  const section = document.querySelector("section");
+  let results = JSON.parse(localStorage.getItem("Quizz"));
+  
+  if (!results) results = await GetRandomQuizz();
 
-export function BeforeGame(username) {
+  Header.header_3();
+  section.innerHTML = "";
+  section.classList.remove(
+    "relative",
+    "h-[65vh]",
+    "flex",
+    "flex-col",
+    "justify-evenly"
+  );
+  Container.beforeGame();
+
   localStorage.setItem("score", "0");
-
-  Header.header_3(username);
-
-  section.classList.add("text-center");
-  section.innerHTML = `
-    <span class="text-8xl text-white font-bold" id="timer">1</span>
-    <h1 class="text-4xl text-pink-700 font-bold">Let's Play !</h1>
-    `;
-
   const interval = setInterval(() => {
     if (timer.textContent == 0) {
       clearInterval(interval);
-      Game(username);
+      Game();
     } else timer.textContent--;
   }, 1000);
 }

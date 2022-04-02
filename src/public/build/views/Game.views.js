@@ -11,8 +11,8 @@ function displayGame(username) {
   makeHUD();
 }
 
-export async function Game(username) {
-  await GetRandomQuizz();
+export async function Game(username, valid) {
+  if (valid) await GetRandomQuizz();
   displayGame(username);
   GameController();
 }

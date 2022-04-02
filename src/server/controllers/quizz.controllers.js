@@ -26,12 +26,12 @@ module.exports.random = async (req, res) => {
     where: { [Op.or]: { id_question } },
   });
 
-  const results = [];
+  const results = ["Random Quizz", []];
   for (i in questions) {
-    results.push([questions[i].question]);
+    results[1].push([questions[i].question]);
     for (b in responses) {
       if (responses[b].id_question === questions[i].id_question) {
-        results[i].push([responses[b].response, responses[b].value]);
+        results[1][i].push([responses[b].response, responses[b].value]);
       }
     }
   }
@@ -59,7 +59,11 @@ module.exports.getQuizz = async (req, res) => {
   const { id_quizz } = req.params;
 
   //~ Requête récupérant le quizz par son id
-  const quizz = await Quizz.findOne({ where: { id_quizz }, raw: true });
+  const quizz = await Quizz.findOne({
+    attributes: ["name", "id_quizz"],
+    where: { id_quizz },
+    raw: true,
+  });
   if (!quizz) return res.status(404).send("Quizz inconnu !");
 
   //~ Requête pour récupéré les questions liées au quizz
@@ -85,7 +89,17 @@ module.exports.getQuizz = async (req, res) => {
   if (!questions || !responses)
     return res.status(400).send("Erreur veuillez réesayez ultérieurement !");
 
-  res.send({ quizz, questions, responses });
+  const results = [quizz.name, []];
+  for (i in questions) {
+    results[1].push([questions[i].question]);
+    for (b in responses) {
+      if (responses[b].id_question === questions[i].id_question) {
+        results[1][i].push([responses[b].response, responses[b].value]);
+      }
+    }
+  }
+
+  res.send({ results });
 };
 
 //* @desc Création d'un quizz par un utilisateur
