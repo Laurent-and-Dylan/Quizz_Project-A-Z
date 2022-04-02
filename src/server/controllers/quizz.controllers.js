@@ -45,11 +45,11 @@ module.exports.quizzOfCategory = async (req, res) => {
   const { id_category } = req.params;
 
   //~ Requête pour récupérer les quizz lié à une catégorie, plus structure de contrôle
-  const quizz = await Quizz.findAll({ where: { id_category } });
-  if (quizz.length === 0)
+  const results = await Quizz.findAll({ where: { id_category } });
+  if (results.length === 0)
     return res.status(404).send({ message: "Category or quizz unknow" });
 
-  res.status(200).send({ quizz });
+  res.status(200).send(results);
 };
 
 //* @desc Récupération d'un quizz précis

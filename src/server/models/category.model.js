@@ -12,6 +12,7 @@ const Category = sequelize.define(
       allowNull: false,
     },
     name: { type: DataTypes.STRING(30), allowNull: false },
+    image: { type: DataTypes.STRING },
   },
   { tableName: "categories", freezeTableName: true, timestamps: false }
 );

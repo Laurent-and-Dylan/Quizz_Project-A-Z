@@ -2,7 +2,7 @@
 
 import { Accueil } from "../views/Accueil.views.js";
 import { Stats } from "../views/Stats.views.js";
-// import { Categories } from "../views/Categories.js"
+import { Categories } from "../views/Categories.views.js";
 
 export function HeaderController(username = null) {
   const categories = document.querySelectorAll(".categories");
@@ -21,7 +21,7 @@ export function HeaderController(username = null) {
 
   categories.forEach((categorie) => {
     categorie.addEventListener("click", () => {
-      // Categories();
+      Categories();
     });
   });
 

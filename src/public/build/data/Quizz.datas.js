@@ -16,3 +16,14 @@ export async function GetQuizz() {
   // ! Ne pas oublier de gerer l'erreur
   else return false;
 }
+
+export async function GetAllQuizz(category) {
+  const results = await fetch(
+    `http://127.0.0.1:3000/api/quizz/category/${category}`
+  ).then((res) => {
+    return res.json();
+  });
+
+  if (results) return results;
+  else return false;
+}
