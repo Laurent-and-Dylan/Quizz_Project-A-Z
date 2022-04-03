@@ -58,7 +58,7 @@ function addEvents(add) {
     let Quizz = JSON.parse(localStorage.getItem("NewQuizz"));
     const title = document
       .getElementById("title")
-      .value.match(/^[a-zA-Z]{5,30}$/);
+      .value.match(/^[a-zA-Z\s]{5,30}$/);
     const quest = document.getElementById("quest").value.match(/^.{15,150}$/);
     const correct = document
       .getElementById("correct")
@@ -66,7 +66,7 @@ function addEvents(add) {
     const bad1 = document.getElementById("bad1").value.match(/^.{1,150}$/);
     const bad2 = document.getElementById("bad2").value.match(/^.{1,150}$/);
     const bad3 = document.getElementById("bad3").value.match(/^.{1,150}$/);
-    
+
     if (quest && correct && bad1 && bad2 && bad3 && title) {
       Quizz.name = title[0];
       Quizz.quests.push(quest[0]);

@@ -1332,6 +1332,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: transparent;
 }
 
+.bg-orange-500\/50 {
+  background-color: rgb(249 115 22 / 0.5);
+}
+
 .bg-gradient-to-r {
   background-image: linear-gradient(to right, var(--tw-gradient-stops));
 }
