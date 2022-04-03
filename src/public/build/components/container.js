@@ -70,4 +70,23 @@ export const Container = {
       <h1 class="text-4xl text-pink-700 font-bold">Let's Play !</h1>
     `;
   },
+  createQuizz() {
+    const container = this.Base();
+
+    container.classList.add("flex", "justify-end", "flex-wrap");
+    container.innerHTML = `
+      <h1 class="w-1/3 text-center text-2xl text-white font-extrabold"><span id="left">1</span>/<span id="total">2</span></h1>
+      <input id="title" class="w-1/3 text-center text-2xl text-white font-extrabold bg-transparent" placeholder="Name of Quizz">
+    `;
+    const subContainer = this.SubContainer();
+
+    subContainer.classList.add(
+      "w-screen",
+      "grid",
+      "grid-cols-4",
+      "gap-4",
+      "mx-20",
+      "my-8"
+    );
+  },
 };
