@@ -9,5 +9,6 @@ router.post("/create", QuizzController.createQuizz);
 router.delete("/delete/:id_quizz", QuizzController.deleteQuizz);
 router.put("/edit/:id_quizz", QuizzController.editQuizz);
 router.post("/user/", QuizzController.getAllQuizzByUser);
+router.post("/getEdit", QuizzController.getQuizzForEdit);
 
 module.exports = router;

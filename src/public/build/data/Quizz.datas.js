@@ -78,3 +78,39 @@ export async function GetQuizzUser() {
   const res = await fetch(`http://127.0.0.1:3000/api/quizz/user/`, init);
   return res.json();
 }
+
+export async function RemoveQuizz(id_quizz) {
+  const id_user = localStorage.getItem("user");
+  const token = localStorage.getItem("jwt");
+
+  const init = {
+    method: "DELETE",
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Connection: "keep-alive",
+    },
+    body: JSON.stringify({ id_user, token }),
+  };
+
+  const res = await fetch(
+    `http://127.0.0.1:3000/api/quizz/delete/${id_quizz}`,
+    init
+  );
+  return res.json();
+}
+
+export async function GetQuizzForEdit(id_quizz) {
+  const id_user = localStorage.getItem("user");
+  const token = localStorage.getItem("jwt");
+
+  const init = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json; charset=UTF-8",
+      Connection: "keep-alive",
+    },
+    body: JSON.stringify({ id_user, token, id_quizz }),
+  };
+  const res = await fetch(`http://127.0.0.1:3000/api/quizz/getEdit/`, init);
+  return res.json();
+}

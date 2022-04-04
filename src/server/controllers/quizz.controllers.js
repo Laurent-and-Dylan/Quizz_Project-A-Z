@@ -52,6 +52,69 @@ module.exports.quizzOfCategory = async (req, res) => {
   res.status(200).send({ results });
 };
 
+//* @desc Récupération d'un quizz pour l'edité
+//* @route POST /api/quizz/getEdit/
+
+module.exports.getQuizzForEdit = async (req, res) => {
+  const { id_quizz, id_user } = req.body;
+
+  // const auth = verifyAuth(req);
+  // if (!auth)
+  //   return res
+  //     .status(400)
+  //     .send({ message: "Veuillez créer un compte ou vous connecter" });
+
+  const quizz = await Quizz.findOne({
+    attributes: ["name", "id_quizz"],
+    where: { id_quizz },
+    raw: true,
+  });
+
+  console.log(quizz);
+  if (!quizz) return res.status(404).send("Quizz inconnu !");
+
+  const questions = await Question.findAll({
+    attributes: ["id_question", "question"],
+    where: { id_quizz },
+    raw: true,
+  });
+
+  let id_question = [];
+  for (i in questions) {
+    id_question.push(questions[i].id_question);
+  }
+
+  const responses = await Response.findAll({
+    attributes: ["id_question", "response", "value", "id_response"],
+    where: { [Op.or]: { id_question } },
+  });
+
+  if (!questions || !responses)
+    return res.status(400).send("Erreur veuillez réesayez ultérieurement !");
+
+  let results = {
+    name: quizz.name,
+    id_quizz,
+    quests: [],
+    resps: [],
+  };
+
+  for (i in questions) {
+    results.quests.push([questions[i].question]);
+    for (b in responses) {
+      if (responses[b].id_question === questions[i].id_question) {
+        results.resps.push([
+          responses[b].response,
+          responses[b].value,
+          responses[b].id_response,
+        ]);
+      }
+    }
+  }
+
+  res.send({ results });
+};
+
 //* @desc Récupération d'un quizz précis
 //* @route GET /api/quizz/:id_quizz
 
@@ -176,7 +239,7 @@ module.exports.deleteQuizz = async (req, res) => {
   if (!auth)
     return res
       .status(400)
-      .send({ message: "You are not authorized to perform this operation" });
+      .send({ results: "You are not authorized to perform this operation" });
 
   //~ Requête pour récuperer l'id du créateur du quizz
   const { id_user } = await Quizz.findOne({
@@ -185,11 +248,11 @@ module.exports.deleteQuizz = async (req, res) => {
   });
 
   //~ Structure de contrôle pour vérifiér le créateur du quizz et l'utilasateur faisant la requête
-  if (auth === id_user) {
+  if (auth[0] === id_user) {
     Quizz.destroy({ where: { id_quizz } });
-    return res.status(200).send({ message: "Your quizz has been deleted" });
+    return res.status(200).send({ results: "Your quizz has been deleted" });
   } else {
-    res.status(400).send({ message: "An error has occurred" });
+    res.status(400).send({ results: "An error has occurred" });
   }
 };
 
