@@ -1,5 +1,8 @@
 "use-strict";
 
+import { Container } from "../components/container.js";
+import { ProfileController } from "../controllers/Profile.controller.js";
+
 function headerProfile() {
   const photo = document.createElement("img");
   photo.src = "images/logo.png";
@@ -11,9 +14,14 @@ function headerProfile() {
 
   document.querySelector("section").innerHTML = `
     <h1>Username</h1>
-  `
+  `;
 }
 
 export function Profile(username) {
-  headerProfile();
+  const section = document.querySelector("section");
+  // headerProfile();
+
+  section.innerHTML = "";
+  Container.profile();
+  ProfileController();
 }

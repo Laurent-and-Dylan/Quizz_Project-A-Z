@@ -27,7 +27,12 @@ function baseEvents(next_add) {
 
     if (quest && correct && bad1 && bad2 && bad3) {
       Quizz.quests.push(quest[0]);
-      Quizz.resps.push([correct[0], bad1[0], bad2[0], bad3[0]]);
+      Quizz.resps.push([
+        [correct[0], true],
+        [bad1[0], false],
+        [bad2[0], false],
+        [bad3[0], false],
+      ]);
 
       localStorage.setItem("NewQuizz", JSON.stringify(Quizz));
 
@@ -70,7 +75,12 @@ function addEvents(add) {
     if (quest && correct && bad1 && bad2 && bad3 && title) {
       Quizz.name = title[0];
       Quizz.quests.push(quest[0]);
-      Quizz.resps.push([correct[0], bad1[0], bad2[0], bad3[0]]);
+      Quizz.resps.push([
+        [correct[0], true],
+        [bad1[0], false],
+        [bad2[0], false],
+        [bad3[0], false],
+      ]);
 
       localStorage.setItem("NewQuizz", JSON.stringify(Quizz));
       EndCreate();

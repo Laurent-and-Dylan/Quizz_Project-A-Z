@@ -238,23 +238,27 @@ module.exports.editQuizz = async (req, res) => {
     .send({ message: `Your quizz ${name} has been edit correctly !` });
 };
 
-//* @desc Récupération de s quizz lié à un utilisateur
+//* @desc Récupération des quizz lié à un utilisateur
 //* @route GET /api/quizz/:id_user
 
 module.exports.getAllQuizzByUser = async (req, res) => {
-  const { id_user } = req.params;
+  const { id_user } = req.body;
 
   //~ Controle d'authorisation de l'utilisateur
   const auth = verifyAuth(req);
   if (!auth) return res.status(400).send({ message: "Access Denied !" });
 
-  if (auth === id_user || auth === "admin") {
+  if (auth[0] == id_user || auth[1] === "admin") {
     //~ Requête pour récupérer tout les quizz
-    const quizz = await Quizz.findAll({ where: { id_user }, raw: true });
+    const results = await Quizz.findAll({
+      attributes: ["id_quizz", "name"],
+      where: { id_user },
+      raw: true,
+    });
 
     //~ Sructure de contrôle et renvoie de réponse
-    if (!quizz[0])
+    if (!results[0])
       return res.status(404).send({ message: "You do not have Quizz" });
-    return res.status(200).send({ quizz });
+    return res.status(200).send({ results });
   } else res.status(400).send({ message: "Access Denied !" });
 };

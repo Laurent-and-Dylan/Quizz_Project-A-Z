@@ -30,7 +30,7 @@ export async function EndCreate() {
   for (let q in quizz.quests) {
     recap.quest(quizz.quests[q], q);
     for (let r in quizz.resps[q]) {
-      recap.resps(quizz.resps[q][r], q);
+      recap.resps(quizz.resps[q][r][0], q);
     }
   }
 

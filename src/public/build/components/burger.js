@@ -1,8 +1,8 @@
 "use-strict";
 
 import { Authentifier } from "../data/Authentifier.js";
-import { CreateQuizz } from "../views/CreateQuizz.views.js";
 import { Display } from "../views/Forms.views.js";
+import { Profile } from "../views/Profile.views.js";
 
 export async function displayBurger() {
   const auth = await Authentifier();
@@ -57,7 +57,7 @@ export function burgerController() {
   const login = document.getElementById("login");
   const profile = document.getElementById("profile");
 
-  if (profile) profile.addEventListener("click", () => CreateQuizz());
+  if (profile) profile.addEventListener("click", () => Profile());
   if (login) login.addEventListener("click", () => Display.loginForm());
   if (register) register.addEventListener("click", () => Display.signUpForm());
   if (logout) {

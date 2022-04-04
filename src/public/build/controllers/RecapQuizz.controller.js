@@ -54,7 +54,7 @@ async function formatData() {
       quizz.quests[q] = quests[q].value;
 
       for (let r in quizz.resps[q]) {
-        quizz.resps[q][r] = resps[r].value;
+        quizz.resps[q][r][0] = resps[r].value;
       }
     }
 
