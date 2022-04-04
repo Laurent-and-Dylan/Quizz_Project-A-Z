@@ -160,7 +160,7 @@ module.exports.createQuizz = async (req, res) => {
   }
 
   res.status(201).send({
-    message: "Félicitation vous venez de créer votre nouveau Quizz !",
+    results: "Félicitation vous venez de créer votre nouveau Quizz !",
   });
 };
 

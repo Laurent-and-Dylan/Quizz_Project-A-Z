@@ -1,7 +1,7 @@
 "use-strict";
 
 import { Accueil } from "../views/Accueil.views.js";
-import { Stats } from "../views/Stats.views.js";
+import { Statistics } from "../views/Statistics.views.js";
 import { Categories } from "../views/Categories.views.js";
 import { Authentifier } from "../data/Authentifier.js";
 
@@ -17,7 +17,7 @@ export function HeaderController() {
 
   stats.forEach((stat) => {
     stat.addEventListener("click", () => {
-      Stats();
+      Statistics();
     });
   });
 

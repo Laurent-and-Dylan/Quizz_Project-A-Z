@@ -8,6 +8,7 @@ export function CreateQuizz() {
   const section = document.querySelector("section");
   const quizz = {
     name,
+    id_category:null,
     quests: [],
     resps: [],
   };

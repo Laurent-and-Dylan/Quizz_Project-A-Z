@@ -1,5 +1,7 @@
 "use-strict";
 
+import { CreateQuizz } from "../data/Quizz.datas.js";
+
 export function RecapQuizzController() {
   const submit = document.getElementById("submit");
   const pens = document.querySelectorAll("[data-pen]");
@@ -17,10 +19,12 @@ export function RecapQuizzController() {
   submit.addEventListener("click", () => formatData());
 }
 
-function formatData() {
+async function formatData() {
   const quests = document.querySelectorAll("[data-quest]");
   const resps = document.querySelectorAll("[data-resp]");
   const title = document.getElementById("title");
+  const category = document.getElementById("category");
+
   let valid = [];
   let ok = true;
 
@@ -30,7 +34,10 @@ function formatData() {
   resps.forEach((resp) => {
     valid.push(resp.value.match(/^.{1,150}$/));
   });
+
   valid.push(title.value.match(/^[a-zA-Z\s]{5,30}$/));
+
+  valid.push(category.value);
 
   for (let v in valid) {
     if (!valid[v]) {
@@ -52,5 +59,7 @@ function formatData() {
     }
 
     localStorage.setItem("NewQuizz", JSON.stringify(quizz));
+    const { results } = await CreateQuizz();
+    console.log(results);
   }
 }

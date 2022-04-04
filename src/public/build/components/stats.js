@@ -1,6 +1,6 @@
 "use-strict";
 
-export const user = {
+export const Stats = {
   title() {
     return `
         <article class="mb-10 flex justify-around text-orange-500 text-4xl font-bold text-center">

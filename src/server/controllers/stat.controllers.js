@@ -69,8 +69,8 @@ module.exports.statOfUser = async (req, res) => {
       },
     ],
   });
-  
-  res.status(200).send({ user, stats });
+
+  res.status(200).send({ results: { user, stats } });
 };
 
 //* @desc Ajouter stats d'un utilisateur

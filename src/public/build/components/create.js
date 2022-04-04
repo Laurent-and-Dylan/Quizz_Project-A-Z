@@ -1,7 +1,5 @@
 "use-strict";
 
-import { CreateQuizzController } from "../controllers/CreateQuizz.controller.js";
-
 export const create = {
   Base() {
     const subContainer = document.getElementById("subContainer");
