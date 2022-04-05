@@ -111,6 +111,7 @@ export const Container = {
       "my-8"
     );
   },
+
   profile() {
     const container = this.Base();
 
@@ -141,23 +142,13 @@ export const Container = {
     </article>
     `;
   },
+
+  editQuizz(quizz) {
+    const container = this.Base();
+
+    container.classList.add("min-h-[65vh]", "py-8");
+    container.innerHTML = `<input type="text" data-quizz="${quizz.id_quizz}" value="${quizz.name}">`;
+
+    return this.SubContainer();
+  },
 };
-
-// <div class="w-10/12 my-8 rounded-tl-3xl rounded-b-3xl rounded-br-3xl shadow-xl bg-sky-700 border-white shadow-slate-900/70 border-4">
-//   <div class="flex justify-around">
-//     <label for"pseudo"></label>
-//     <button id='pseudo' class="w-1/3 py-8 text-3xl rounded-l-3xl font-bold text-center text-white">Pseudo</button>
-//     <button id='bio' class="w-1/3 py-8 text-3xl font-bold text-center text-white">Bio</button>
-//     <button id='email' class="w-1/3 py-8 text-3xl font-bold text-center text-white">Email</button>
-//     <button id='password' class="w-1/3 py-8 text-3xl  font-bold text-center text-white">Password</button>
-//   </div>
-//     <input type='text' value="pseudo" class="block mx-auto w-1/3">
-//     <input type='text' value="bio" class="block mx-auto w-2/3">
-//     <input type='text' value="email" class="block mx-auto w-2/3">
-//     <input type='text' value="password" class="block mx-auto w-2/3">
-
-//     <button class="block w-2/4 md:w-1/3 h-10 mx-auto   rounded-xl font-medium  md:h-11 lg:h-14 lg:w-80 lg:rounded-2xl lg:text-3xl text-white bg-gradient-to-r from-yellow-300 to-amber-500 hover:bg-gradient-to-l hover:scale-105" id="play">Submit</button>
-// </div>
-// <div class="mt-8 h-14 w-14 border-rose-600 bg-white/80 rounded-r-lg border-4 hover:scale-105 shadow-xl shadow-slate-900/70">
-// <img class="m-2 bg-auto" src="./styles/images/pen.png" alt="">
-// </div>

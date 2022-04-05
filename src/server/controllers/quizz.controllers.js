@@ -70,7 +70,6 @@ module.exports.getQuizzForEdit = async (req, res) => {
     raw: true,
   });
 
-  console.log(quizz);
   if (!quizz) return res.status(404).send("Quizz inconnu !");
 
   const questions = await Question.findAll({
@@ -100,10 +99,11 @@ module.exports.getQuizzForEdit = async (req, res) => {
   };
 
   for (i in questions) {
-    results.quests.push([questions[i].question]);
+    results.quests.push([questions[i].question, id_question[i]]);
+    results.resps[i] = [];
     for (b in responses) {
       if (responses[b].id_question === questions[i].id_question) {
-        results.resps.push([
+        results.resps[i].push([
           responses[b].response,
           responses[b].value,
           responses[b].id_response,
@@ -261,8 +261,8 @@ module.exports.deleteQuizz = async (req, res) => {
 // ! Fixer le probleme de name quizz déjà utilisé
 module.exports.editQuizz = async (req, res) => {
   const { id_quizz } = req.params;
-  const { quests, resps, name } = req.body;
-
+  const { quests, resps, name } = req.body.results;
+  console.log(req.body.results);
   //~ Controle d'authorisation de l'utilisateur
   const auth = verifyAuth(req);
   if (!auth)

@@ -1,6 +1,7 @@
 "use-strict";
 
 import { GetQuizzForEdit, RemoveQuizz } from "../data/Quizz.datas.js";
+import { EditQuizz } from "../views/EditQuizz.views.js";
 import { UserQuizz } from "../views/UserQuizz.views.js";
 
 export function UserQuizzController() {
@@ -12,7 +13,7 @@ export function UserQuizzController() {
       const { results } = await GetQuizzForEdit(edit.dataset.edit);
 
       if (results) {
-        localStorage.setItem("EditQuizz", results);
+        localStorage.setItem("EditQuizz", JSON.stringify(results));
         EditQuizz();
       }
     });
