@@ -1,8 +1,9 @@
 "use-strict";
 
+const section = document.querySelector("section");
+
 export const Container = {
   Base() {
-    const section = document.querySelector("section");
     const container = document.createElement("div");
     container.setAttribute("id", "container");
     section.appendChild(container);
@@ -19,18 +20,23 @@ export const Container = {
     return subContainer;
   },
 
+  form(submit, input1, input2, input3 = null) {
+    const register = input3
+      ? `<input type="email" placeholder="${input3}" minlength="7" maxlength="40" class="w-80 h-8 mt-8 block mx-auto rounded-md text-xl text-center text-slate-400" id="mail">`
+      : "";
+
+    section.classList.replace("h-[85vh]", "h-[55vh]");
+    section.innerHTML = `
+      ${register}
+      <input type="text" placeholder="${input1}" class="w-80 h-8 block mx-auto rounded-md text-xl text-center text-slate-400" id="username">
+      <input type="password" placeholder="${input2}" class="w-80 h-8 block mx-auto rounded-md text-xl text-center text-slate-400" id="password">
+      <input type="submit" value="${submit}" class="w-48 h-10 my-9 block mx-auto rounded-md text-xl text-center text-white bg-gradient-to-r from-yellow-300 to-amber-500 cursor-pointer" id="submit">
+    `;
+  },
   accueil(username = null) {
-    const container = this.Base();
+    section.classList.replace("h-[85vh]", "h-[65vh]");
 
-    container.classList.add(
-      "h-[65vh]",
-      "relative",
-      "flex",
-      "flex-col",
-      "justify-evenly"
-    );
-
-    container.innerHTML = `
+    section.innerHTML = `
     <h1 class="text-2xl lg:text-3xl font-bold text-center text-pink-600"">Welcome and Enjoy ${
       username ? username : ""
     }</h1>
@@ -76,17 +82,8 @@ export const Container = {
   },
 
   beforeGame() {
-    const container = this.Base();
-
-    container.classList.add(
-      "relative",
-      "h-[65vh]",
-      "flex",
-      "flex-col",
-      "text-center",
-      "justify-evenly"
-    );
-    container.innerHTML = `
+    section.classList.add("text-center");
+    section.innerHTML = `
       <span class="text-8xl text-white font-bold" id="timer">1</span>
       <h1 class="text-4xl text-pink-700 font-bold">Let's Play !</h1>
     `;

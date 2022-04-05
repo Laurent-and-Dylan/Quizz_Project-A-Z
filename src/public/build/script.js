@@ -1,19 +1,17 @@
 "use-strict";
 
 import { Remover } from "./utils/Remover.js";
-import { Display as Forms } from "./views/Forms.views.js";
+import { LoginForm, RegisterForm } from "./views/Forms.views.js";
 import { Accueil } from "./views/Accueil.views.js";
 import { reconnect } from "./utils/Reconnect.js";
 
 reconnect();
 
 login.addEventListener("click", (e) => {
-  Remover.main();
-  Forms.loginForm();
+  LoginForm();
 });
 signUp.addEventListener("click", (e) => {
-  Remover.main();
-  Forms.signUpForm();
+  RegisterForm();
 });
 guest.addEventListener("click", (e) => {
   Remover.main();

@@ -1,10 +1,10 @@
 "use-strict";
 
 import { Authentifier } from "../data/Authentifier.js";
-import { Display } from "../views/Forms.views.js";
+// import { Display } from "../views/Forms.views.js";
 import { Profile } from "../views/Profile.views.js";
 
-export async function displayBurger() {
+async function displayBurger() {
   const auth = await Authentifier();
 
   let connect;
@@ -37,7 +37,7 @@ export async function displayBurger() {
     `;
 }
 
-export function animBurger() {
+function EventsBurger() {
   const submenu = document.querySelectorAll(".submenu");
 
   burger.addEventListener("click", (e) => {
@@ -49,9 +49,11 @@ export function animBurger() {
       li.classList.toggle("invisible");
     });
   });
+
+  BurgerController();
 }
 
-export function burgerController() {
+function BurgerController() {
   const logout = document.getElementById("logout");
   const register = document.getElementById("register");
   const login = document.getElementById("login");
@@ -67,3 +69,5 @@ export function burgerController() {
     });
   }
 }
+
+export { displayBurger, EventsBurger };

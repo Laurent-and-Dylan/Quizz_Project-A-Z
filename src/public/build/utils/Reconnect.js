@@ -2,7 +2,6 @@
 
 import { Authentifier } from "../data/Authentifier.js";
 import { Accueil } from "../views/Accueil.views.js";
-import { Remover } from "./Remover.js";
 
 export async function reconnect() {
   const user_id = localStorage.getItem("user");
@@ -12,7 +11,6 @@ export async function reconnect() {
     const { connected, username } = await Authentifier(token, user_id);
 
     if (connected) {
-      Remover.main();
       Accueil(username);
     }
   } else {
