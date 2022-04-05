@@ -262,7 +262,7 @@ module.exports.deleteQuizz = async (req, res) => {
 module.exports.editQuizz = async (req, res) => {
   const { id_quizz } = req.params;
   const { quests, resps, name } = req.body.results;
-  console.log(req.body.results);
+
   //~ Controle d'authorisation de l'utilisateur
   const auth = verifyAuth(req);
   if (!auth)
@@ -288,11 +288,15 @@ module.exports.editQuizz = async (req, res) => {
     );
   }
 
-  //~ Requête pour mettre à jour les réponses de chaque question
+  // //~ Requête pour mettre à jour les réponses de chaque question
   for (r in resps) {
     await Response.update(
       { response: resps[r][0] },
-      { where: { id_response: [resps[r][1]] } }
+      {
+        where: {
+          id_response: [resps[r][2]],
+        },
+      }
     );
   }
 
