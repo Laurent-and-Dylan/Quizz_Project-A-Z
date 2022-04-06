@@ -7,7 +7,7 @@ import { Header } from "../components/header.js";
 import { GameController } from "../controllers/Game.controller.js";
 
 function displayGame(username) {
-  Header.header_3(username);
+  Header.game(username);
   makeHUD();
 }
 

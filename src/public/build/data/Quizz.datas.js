@@ -1,5 +1,27 @@
 import { Randomize_Array } from "../utils/Randomize_Array.js";
 
+// class QuizzData {
+//   constructor(path, method, results) {
+//     this.path = path;
+//     this.method = method;
+//     this.results = results;
+//   }
+//   get request() {
+//     this.request();
+//   }
+//   request() {
+//     const init = {
+//       method: `${this.method}`,
+//       headers: {
+//         "Content-type": "application/json; charset=UTF-8",
+//         Connection: "keep-alive",
+//       },
+//       body: JSON.stringify({ results }),
+//     };
+//     fetch(`http://127.0.0.1:3000/api/quizz/${this.pass}`, init);
+//   }
+// }
+
 export async function GetRandomQuizz() {
   const { results } = await fetch(
     "http://127.0.0.1:3000/api/quizz/random"

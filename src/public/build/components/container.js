@@ -1,5 +1,7 @@
 "use-strict";
 
+import { Button } from "./button.js";
+
 const section = document.querySelector("section");
 
 export const Container = {
@@ -41,8 +43,15 @@ export const Container = {
       username ? username : ""
     }</h1>
     <p class="text-2xl lg:text-4xl font-bold text-center text-orange-500">Play now with a random Quizz !</p>
-    <button class="block w-2/4 md:w-1/3 h-10 mx-auto   rounded-xl font-medium  md:h-11 lg:h-14 lg:w-80 lg:rounded-2xl lg:text-3xl text-white bg-gradient-to-r from-yellow-300 to-amber-500 hover:bg-gradient-to-l hover:scale-105" id="play">Play</button>
-  `;
+    ${
+      new Button(
+        "Play",
+        "play",
+        "block w-2/4 md:w-1/3 h-10 mx-auto rounded-xl font-medium md:h-11 lg:h-14 lg:w-80"
+      ).display
+    }
+    `;
+    // <button class="block w-2/4 md:w-1/3 h-10 mx-auto rounded-xl font-medium md:h-11 lg:h-14 lg:w-80 lg:rounded-2xl lg:text-3xl text-white bg-gradient-to-r from-yellow-300/80 to-amber-500/80 hover:bg-gradient-to-l hover:scale-105" id="play">Play</button>
   },
 
   categories() {

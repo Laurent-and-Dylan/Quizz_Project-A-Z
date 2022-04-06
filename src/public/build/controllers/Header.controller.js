@@ -4,7 +4,6 @@ import { Accueil } from "../views/Accueil.views.js";
 import { Statistics } from "../views/Statistics.views.js";
 import { Categories } from "../views/Categories.views.js";
 import { Authentifier } from "../data/Authentifier.js";
-// import { Display } from "../views/Forms.views.js";
 
 export function HeaderController() {
   const { username } = Authentifier();
@@ -35,16 +34,3 @@ export function HeaderController() {
     });
   }
 }
-
-// export function HeaderControllerForm() {
-//   const h2 = document.querySelector(`header > h2`);
-
-//   h2.addEventListener("click", () => {
-//     console.log("hello");
-//     if (h2.textContent === "Register") {
-//       Display.signUpForm();
-//     } else {
-//       Display.loginForm();
-//     }
-//   });
-// }

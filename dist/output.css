@@ -1127,8 +1127,17 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(253 224 71 / 0));
 }
 
+.from-yellow-300\/80 {
+  --tw-gradient-from: rgb(253 224 71 / 0.8);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(253 224 71 / 0));
+}
+
 .to-amber-500 {
   --tw-gradient-to: #f59e0b;
+}
+
+.to-amber-500\/80 {
+  --tw-gradient-to: rgb(245 158 11 / 0.8);
 }
 
 .bg-cover {
