@@ -8,6 +8,7 @@ export const Container = {
   Base() {
     const container = document.createElement("div");
     container.setAttribute("id", "container");
+    section.innerHTML = "";
     section.appendChild(container);
 
     return container;
@@ -36,12 +37,11 @@ export const Container = {
       ${new Button(submit, "submit", "mx-auto mt-8").display}
       
       `;
-      // <input type="submit" value="${submit}" class="w-48 h-10 block mt-10 mx-auto rounded-md text-xl text-center text-white bg-gradient-to-r from-yellow-300 to-amber-500 cursor-pointer" id="submit">
   },
 
   accueil(username = null) {
-    section.classList.replace("h-[85vh]", "h-[65vh]");
-
+    section.className = "";
+    section.classList.add("h-[65vh]", "flex", "flex-col", "justify-evenly");
     section.innerHTML = `
     <h1 class="text-2xl lg:text-3xl text-center text-pink-600 font-permanent">Welcome and Enjoy ${
       username ? username : ""
@@ -55,7 +55,6 @@ export const Container = {
       ).display
     }
     `;
-    // <button class="block w-2/4 md:w-1/3 h-10 mx-auto rounded-xl font-medium md:h-11 lg:h-14 lg:w-80 lg:rounded-2xl lg:text-3xl text-white bg-gradient-to-r from-yellow-300/80 to-amber-500/80 hover:bg-gradient-to-l hover:scale-105" id="play">Play</button>
   },
 
   categories() {
@@ -155,10 +154,29 @@ export const Container = {
 
   editQuizz(quizz) {
     const container = this.Base();
-
+    // class="h-[65vh] flex flex-col justify-evenly text-center"
     container.classList.add("min-h-[65vh]", "py-8");
     container.innerHTML = `<input type="text" data-quizz="${quizz.id_quizz}" value="${quizz.name}">`;
 
     return this.SubContainer();
+  },
+
+  game() {
+    const container = this.Base();
+    container.className =
+      "grid grid-cols-3 grid-row-6 w-11/12 p-4 bg-white/50 mx-auto rounded-2xl text-xl md:flex md:flex-wrap md:h-[50vh] md:text-2xl md:text-center";
+    container.innerHTML = `
+        <h2 class="h-min md:w-[10%] font-bold text-sky-900 text-2xl lg:text-3xl">
+          <span id="time">20</span> s
+        </h2>
+        <h2 class="row-start-2 col-start-1 col-end-4 px-4 py-2 md:w-[80%] text-sky-900 text-center" id="question">Question</h2>
+        <h2 class="row-start-1 col-start-3 w-full h-min text-right md:w-[10%] font-bold text-sky-900 text-2xl lg:text-3xl" id="rest"></h2>
+    `;
+
+    const subContainer = this.SubContainer();
+    subContainer.className =
+      "row-start-3 row-end-6 col-start-1 col-end-4 grid grid-rows-4 gap-4 md:place-self-center md:grid-rows-2 md:grid-cols-2 md:w-full";
+
+    return subContainer, container;
   },
 };

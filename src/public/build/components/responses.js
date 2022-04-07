@@ -13,9 +13,9 @@ export async function displayResponses() {
       results[1][left.textContent - 1][i]
     );
 
-    game.innerHTML += `
-    <article class="responses w-4/5 mx-auto h-[6vh] md:h-[10vh] flex items-center justify-center bg-gray-200 rounded-lg shadow-lg shadow-slate-900/70" >
-      <h1 id="${index}" class="responses w-full h-full text-xl text-sky-900 text-center py-2 md:py-8 font-bold rounded-lg" />${
+    subContainer.innerHTML += `
+    <article class="responses h-[6vh] md:h-[10vh] flex items-center justify-center bg-gray-200 rounded-lg shadow-lg shadow-slate-900/70" >
+      <h1 id="${index}" class="responses w-full h-full text-xl text-sky-900 text-center py-2 md:py-6 font-bold rounded-lg" />${
       results[1][left.textContent - 1][i][0]
     }</h1>
     </article>

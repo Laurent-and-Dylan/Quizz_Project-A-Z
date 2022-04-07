@@ -14,13 +14,7 @@ export const Header = {
   form(h1, h2) {
     this.Base();
 
-    header.classList.add(
-      "flex",
-      "items-start",
-      "justify-between",
-      "px-4",
-      "h-[20vh]"
-    );
+    header.className = "flex items-start justify-between h-[20vh]";
     header.innerHTML += `
       <h1 class="absolute left-2/4 top-80 -translate-x-2/4 md:top-6 font-extrabold text-white text-3xl">${h1}</h1>
       <h2 class="mt-6 mr-4 font-extrabold text-white text-3xl cursor-pointer" id="${h2}">${h2}</h2>
@@ -30,14 +24,7 @@ export const Header = {
   async main() {
     this.Base();
 
-    header.classList.add(
-      "flex",
-      "items-start",
-      "justify-between",
-      "h-[20vh]",
-      "py-4",
-      "px-4"
-    );
+    header.className = " flex items-start justify-between h-[20vh] py-4 px-4";
     header.innerHTML += `
         <nav class="h-full flex m-4" id="navbar">
               <ul class="flex md:w-[40vw] justify-end lg:justify-between">

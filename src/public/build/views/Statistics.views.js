@@ -1,28 +1,18 @@
 "use-strict";
 
 import { getAllQuizz } from "../data/Stats.datas.js";
-import { Container } from "../components/container.js";
 import { Stats } from "../components/stats.js";
+import { Container } from "../components/container.js";
 
 export async function Statistics() {
-  const { results } = await getAllQuizz();
-  const section = document.querySelector("section");
+  let { results } = await getAllQuizz();
+  let section = document.querySelector("section");
+  let container = Container.Base();
+  
+  
+  section.className = "py-[4vh]";
+  container.className = "w-3/4 min-h-[57vh] py-3 mx-auto bg-zinc-200 rounded-2xl";
 
-  section.classList.remove(
-    "relative",
-    "h-full",
-    "flex",
-    "flex-col",
-    "justify-evenly",
-    "min-h-full",
-    "my-14"
-  );
-  section.classList.add("min-h-full");
-  section.innerHTML = "";
-
-  const container = Container.Base();
-
-  container.classList.add("min-h-[65vh]");
   container.innerHTML = Stats.title();
 
   for (let s in results.stats) {
