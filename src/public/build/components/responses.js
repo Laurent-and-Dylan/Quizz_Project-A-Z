@@ -14,8 +14,8 @@ export async function displayResponses() {
     );
 
     game.innerHTML += `
-    <article class="responses h-[8vh] md:h-[15vh] my-2 flex items-center justify-center bg-white rounded-lg" >
-      <h1 id="${index}" class="responses w-full h-full text-xl text-pink-500 text-center py-2 md:py-8 font-bold rounded-lg" />${
+    <article class="responses w-4/5 mx-auto h-[6vh] md:h-[10vh] flex items-center justify-center bg-gray-200 rounded-lg shadow-lg shadow-slate-900/70" >
+      <h1 id="${index}" class="responses w-full h-full text-xl text-sky-900 text-center py-2 md:py-8 font-bold rounded-lg" />${
       results[1][left.textContent - 1][i][0]
     }</h1>
     </article>
