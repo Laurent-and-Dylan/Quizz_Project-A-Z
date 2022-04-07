@@ -13,14 +13,15 @@ export class Button {
     this.text = text;
     this.id = id;
     this.styles = styles;
+    this.mq =
+      "w-1/3 h-9 rounded-xl font-medium md:w-52 md:h-11 lg:h-14 lg:w-80 lg:rounded-2xl lg:text-3xl";
   }
   get display() {
     return this.create();
   }
-
   create() {
     return `
-    <button class="anim_btn ${this.styles}" id="${this.id}">
+    <button class="anim_btn ${this.mq} ${this.styles}" id="${this.id}">
       <span></span>
       <span></span>
       <span></span>
@@ -28,5 +29,8 @@ export class Button {
       ${this.text}
     </button>
     `;
+  }
+  background(id, bg) {
+    id.style.setProperty("--bg", bg);
   }
 }

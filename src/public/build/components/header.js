@@ -19,11 +19,11 @@ export const Header = {
       "items-start",
       "justify-between",
       "px-4",
-      "h-[30vh]"
+      "h-[20vh]"
     );
     header.innerHTML += `
-      <h1 class="absolute left-2/4 top-44 -translate-x-2/4 md:top-4 font-extrabold text-white text-3xl">${h1}</h1>
-      <h2 class="mt-4 font-extrabold text-white text-3xl cursor-pointer" id="${h2}">${h2}</h2>
+      <h1 class="absolute left-2/4 top-80 -translate-x-2/4 md:top-6 font-extrabold text-white text-3xl">${h1}</h1>
+      <h2 class="mt-6 mr-4 font-extrabold text-white text-3xl cursor-pointer" id="${h2}">${h2}</h2>
     `;
   },
 

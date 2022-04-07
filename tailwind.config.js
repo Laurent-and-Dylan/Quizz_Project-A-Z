@@ -1,8 +1,13 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    fontFamily: {},
-    extend: {},
+    extend: {
+      fontFamily: {
+        permanent: ["Permanent"],
+        roboto: ["Roboto"],
+      },
+    },
+    variants: {},
+    plugins: [],
   },
-  plugins: [],
 };
