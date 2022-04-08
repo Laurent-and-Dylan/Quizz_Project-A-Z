@@ -5,7 +5,7 @@ import { timer } from "./timer.js";
 
 export function makeHUD() {
   const section = document.querySelector("section");
-  const results = JSON.parse(localStorage.getItem("Quizz"));
+  const { results } = JSON.parse(localStorage.getItem("Quizz"));
 
   Container.game();
   section.classList.remove("text-center");
@@ -41,7 +41,7 @@ export function makeHUD() {
 }
 
 export function updateHUD() {
-  const results = JSON.parse(localStorage.getItem("Quizz"));
+  const { results } = JSON.parse(localStorage.getItem("Quizz"));
 
   time.textContent = 20;
   left.textContent++;

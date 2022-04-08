@@ -10,7 +10,6 @@
 
 /** Animation button **/
 .anim_btn {
-  position: relative;
   display: inline-block;
   color: rgba(255, 255, 255, 0.7);
   letter-spacing: 2px;

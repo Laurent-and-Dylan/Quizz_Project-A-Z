@@ -8,7 +8,7 @@ export function CategoryController() {
 
   categories.forEach((category) => {
     category.addEventListener("click", async (e) => {
-      const results = await GetAllQuizz(e.target.dataset.category);
+      const results = await GetAllQuizz(e.target.parentNode.dataset.category);
 
       Quizz(results);
     });

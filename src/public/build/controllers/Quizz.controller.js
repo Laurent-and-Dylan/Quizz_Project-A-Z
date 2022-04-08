@@ -1,7 +1,7 @@
 "use-strict";
 
 import { GetQuizz } from "../data/Quizz.datas.js";
-import { button } from "../components/button.js";
+import { Button } from "../components/Button.js";
 import { BeforeGame } from "../views/BeforeGame.views.js";
 
 export function QuizzController() {
@@ -9,17 +9,15 @@ export function QuizzController() {
 
   quizz.forEach((quiz) => {
     quiz.addEventListener("click", async (e) => {
-      await GetQuizz(e.target.dataset.quizz);
-      // localStorage.setItem("Quizz", JSON.stringify(result));
+      let result = await GetQuizz(e.target.dataset.quizz);
+      localStorage.setItem("Quizz", JSON.stringify(result));
 
-      button("Play", "play");
-      play.classList.add(
-        "fixed",
-        "top-3/4",
-        "left-1/2",
-        "-translate-x-2/4",
-        "z-20"
-      );
+      subContainer.innerHTML += new Button(
+        "Play",
+        "play",
+        "top-3/4 z-20"
+      ).display;
+      play.classList.replace("relative", "fixed");
 
       play.addEventListener("click", () => BeforeGame("lala", true));
     });

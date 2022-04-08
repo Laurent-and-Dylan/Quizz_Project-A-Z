@@ -3,9 +3,10 @@
 export function category(category) {
   const subContainer = document.querySelector("#container > div");
   return (subContainer.innerHTML += `
-        <article data-category='${category.id_category}' class="category flex justify-around items-end w-[50vh] h-[35vh] bg-cover bg-center hover:scale-105 shadow-xl shadow-yellow-300 md:shadow-2xl md:shadow-yellow-300 cursor-pointer" style="background-image: url(${category.image})">
-            <h1>${category.name}</h1>
-        </article>
+            <figure data-category='${category.id_category}' class="category hover:scale-105 duration-500 cursor-pointer">
+              <img src='${category.image}' alt="" class="w-[17vw] h-[20vh] rounded-lg ">
+              <h1 class="text-center mt-1 text-xl font-permanent text-yellow-300">${category.name}</h1>
+            </figure>
         `);
 }
 

@@ -1,6 +1,6 @@
 "use-strict";
 
-import { Button } from "./button.js";
+import { Button } from "./Button.js";
 
 const section = document.querySelector("section");
 
@@ -40,13 +40,12 @@ export const Container = {
   },
 
   accueil(username = null) {
-    section.className = "";
-    section.classList.add("h-[65vh]", "flex", "flex-col", "justify-evenly");
+    section.className = "h-[65vh] flex flex-col justify-evenly";
     section.innerHTML = `
-    <h1 class="text-2xl lg:text-3xl text-center text-pink-600 font-permanent">Welcome and Enjoy ${
+    <h1 class="text-2xl lg:text-3xl text-center text-yellow-300 font-permanent">Welcome and Enjoy ${
       username ? username : ""
     }</h1>
-    <p class="text-2xl lg:text-4xl text-center text-orange-500 font-permanent">Play now a random Quizz !</p>
+    <p class="text-2xl lg:text-4xl text-center text-yellow-600 font-permanent">Play now a random Quizz !</p>
     ${
       new Button(
         "Play",
@@ -61,18 +60,13 @@ export const Container = {
     const container = this.Base();
 
     container.innerHTML = `
-      <h1 class="text-2xl font-extrabold text-center text-orange-500">CHOOSE A CATEGORY THEN SELECT QUIZZ</h1>
+      <h1 class="text-2xl text-center text-yellow-600 font-permanent">CHOOSE CATEGORY THEN SELECT QUIZZ</h1>
     `;
 
     const subContainer = this.SubContainer();
 
-    subContainer.classList.add(
-      "grid",
-      "grid-cols-3",
-      "gap-8",
-      "my-10",
-      "justify-items-center"
-    );
+    subContainer.className =
+      "w-4/5 grid grid-cols-3 gap-8 my-10 mx-auto p-10 justify-items-center rounded-xl bg-cyan-700/90 shadow-2xl shadow-black";
   },
 
   quizz() {
@@ -170,7 +164,7 @@ export const Container = {
           <span id="time">20</span> s
         </h2>
         <h2 class="row-start-2 col-start-1 col-end-4 px-4 py-2 md:w-[80%] text-sky-900 text-center" id="question">Question</h2>
-        <h2 class="row-start-1 col-start-3 w-full h-min text-right md:w-[10%] font-bold text-sky-900 text-2xl lg:text-3xl" id="rest"></h2>
+        <h2 class="row-start-1 col-start-3 w-full h-min md:w-[10%] font-bold text-sky-900 text-2xl lg:text-3xl" id="rest"></h2>
     `;
 
     const subContainer = this.SubContainer();

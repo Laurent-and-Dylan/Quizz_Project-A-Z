@@ -1,26 +1,62 @@
 import { Randomize_Array } from "../utils/Randomize_Array.js";
 
-// class QuizzData {
-//   constructor(path, method, results) {
-//     this.path = path;
-//     this.method = method;
-//     this.results = results;
-//   }
-//   get request() {
-//     this.request();
-//   }
-//   request() {
-//     const init = {
-//       method: `${this.method}`,
-//       headers: {
-//         "Content-type": "application/json; charset=UTF-8",
-//         Connection: "keep-alive",
-//       },
-//       body: JSON.stringify({ results }),
-//     };
-//     fetch(`http://127.0.0.1:3000/api/quizz/${this.pass}`, init);
-//   }
-// }
+/**
+ * @param  {string} path
+ * @param  {string} method
+ * @param  {} results
+ */
+export class QuizzData {
+  constructor(path, method, results = null) {
+    this.path = path;
+    this.method = method;
+    this.results = results;
+    this.init = {
+      method: `${this.method}`,
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        Connection: "keep-alive",
+      },
+    };
+  }
+
+  get fetch() {
+    return this.request();
+  }
+
+  async request() {
+    let res;
+    if (this.method != "GET") {
+      this.init.body = JSON.stringify(this.results);
+      res = await fetch(
+        `http://127.0.0.1:3000/api/quizz/${this.path}`,
+        this.init
+      );
+      return res.json();
+    } else if (this.method === "GET" && this.results != null) {
+      res = await fetch(
+        `http://127.0.0.1:3000/api/quizz/${this.path}/${this.results}`,
+        this.init
+      );
+      return res.json();
+    } else {
+      res = await fetch(
+        `http://127.0.0.1:3000/api/quizz/${this.path}/`,
+        this.init
+      );
+      return res.json();
+    }
+  }
+  // request() {
+  //   let res
+  //   if (this.method !== "GET") {init.body = JSON.stringify(this.results)}
+  //   } else {
+  //     res = fetch(`http://127.0.0.1:3000/api/quizz/${this.pass}/${this.results}`, init);
+  //   }
+
+  //   res = fetch(`http://127.0.0.1:3000/api/quizz/${this.pass}`, init);
+  //   console.log(res);
+  //   return res.json();
+}
 
 export async function GetRandomQuizz() {
   const { results } = await fetch(

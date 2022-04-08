@@ -8,10 +8,10 @@ export async function Statistics() {
   let { results } = await getAllQuizz();
   let section = document.querySelector("section");
   let container = Container.Base();
-  
-  
+
   section.className = "py-[4vh]";
-  container.className = "w-3/4 min-h-[57vh] py-3 mx-auto bg-zinc-200 rounded-2xl";
+  container.className =
+    "w-3/4 min-h-[57vh] mx-auto bg-cyan-900 rounded-2xl shadow-2xl shadow-black";
 
   container.innerHTML = Stats.title();
 

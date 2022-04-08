@@ -5,7 +5,7 @@ export let valid = false;
 
 export async function displayResponses() {
   valid = false;
-  const results = JSON.parse(localStorage.getItem("Quizz"));
+  const { results } = JSON.parse(localStorage.getItem("Quizz"));
 
   //~ Display responses in grid section
   for (let i = 1; i < results[1][left.textContent - 1].length; i++) {
@@ -42,7 +42,7 @@ export async function displayResponses() {
 }
 
 export function goodResponse() {
-  const results = JSON.parse(localStorage.getItem("Quizz"));
+  const { results } = JSON.parse(localStorage.getItem("Quizz"));
   for (let g in results[1][left.textContent - 1]) {
     if (results[1][left.textContent - 1][g][1] === true) {
       const right = results[1][left.textContent - 1].indexOf(

@@ -1,7 +1,7 @@
 "use-strict";
 
 import { Authentifier } from "../data/Authentifier.js";
-// import { Display } from "../views/Forms.views.js";
+import { LoginForm, RegisterForm } from "../views/Forms.views.js";
 import { Profile } from "../views/Profile.views.js";
 
 async function displayBurger() {
@@ -38,8 +38,23 @@ async function displayBurger() {
 }
 
 function EventsBurger() {
-  const submenu = document.querySelectorAll(".submenu");
+  let submenu = document.querySelectorAll(".submenu");
+  function BurgerController() {
+    let logout = document.getElementById("logout");
+    let register = document.getElementById("register");
+    let login = document.getElementById("login");
+    let profile = document.getElementById("profile");
 
+    if (profile) profile.addEventListener("click", () => Profile());
+    if (login) login.addEventListener("click", () => LoginForm());
+    if (register) register.addEventListener("click", () => RegisterForm());
+    if (logout) {
+      logout.addEventListener("click", () => {
+        localStorage.clear();
+        document.location = "http://127.0.0.1:5500/src/public/";
+      });
+    }
+  }
   burger.addEventListener("click", (e) => {
     line1.classList.toggle("ln1");
     line2.classList.toggle("hidden");
@@ -49,25 +64,7 @@ function EventsBurger() {
       li.classList.toggle("invisible");
     });
   });
-
   BurgerController();
-}
-
-function BurgerController() {
-  const logout = document.getElementById("logout");
-  const register = document.getElementById("register");
-  const login = document.getElementById("login");
-  const profile = document.getElementById("profile");
-
-  if (profile) profile.addEventListener("click", () => Profile());
-  if (login) login.addEventListener("click", () => Display.loginForm());
-  if (register) register.addEventListener("click", () => Display.signUpForm());
-  if (logout) {
-    logout.addEventListener("click", () => {
-      localStorage.clear();
-      document.location = "http://127.0.0.1:5500/src/public/";
-    });
-  }
 }
 
 export { displayBurger, EventsBurger };
