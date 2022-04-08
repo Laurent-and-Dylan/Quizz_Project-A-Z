@@ -14,22 +14,24 @@ export const Header = {
   form(h1, h2) {
     this.Base();
 
-    header.className = "flex items-start justify-between h-[20vh]";
+    header.className =
+      "flex items-start justify-between h-[20vh] font-dosis uppercase font-extrabold text-jaune text-3xl";
     header.innerHTML += `
-      <h1 class="absolute left-2/4 top-80 -translate-x-2/4 md:top-6 font-extrabold text-yellow-300 text-3xl">${h1}</h1>
-      <h2 class="mt-6 mr-4 font-extrabold text-yellow-300 text-3xl cursor-pointer" id="${h2}">${h2}</h2>
+      <h1 class="absolute left-2/4 top-80 -translate-x-2/4 md:top-6">${h1}</h1>
+      <h2 class="mt-6 mr-4 cursor-pointer" id="${h2}">${h2}</h2>
     `;
   },
 
   async main() {
     this.Base();
 
-    header.className = " flex items-start justify-between h-[20vh] py-4 px-4";
+    header.className =
+      " flex items-start justify-between h-[20vh] py-4 px-4 font-dosis text-white";
     header.innerHTML += `
         <nav class="h-full flex m-4" id="navbar">
-              <ul class="flex md:w-[40vw] justify-end lg:justify-between">
-                <li class="stats text-4xl h-12 hidden lg:block text-yellow-300 text-shadow text-shadow-lg font-extrabold hover:scale-105 cursor-pointer">Stats</li>
-                <li class="categories text-4xl h-12 hidden lg:block text-yellow-300  drop-shadow-2xl shadow-white font-extrabold hover:scale-105 cursor-pointer">Categories</li>
+              <ul class="flex md:w-[30vw] justify-end lg:justify-between">
+                <li class="stats text-4xl h-12 hidden lg:block font-extrabold hover:scale-105 cursor-pointer">STATS</li>
+                <li class="categories text-4xl h-12 hidden lg:block font-extrabold hover:scale-105 cursor-pointer">CATEGORIES</li>
                 ${await displayBurger()}
               </ul>
         </nav>

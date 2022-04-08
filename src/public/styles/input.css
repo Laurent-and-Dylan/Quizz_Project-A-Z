@@ -5,10 +5,41 @@
 @layer base {
   @font-face {
     font-family: "Permanent";
-    src: url('../src/public/styles/PermanentMarker-Regular.ttf');
+    src: url("../src/public/styles/fonts/PermanentMarker-Regular.ttf");
   }
   @font-face {
-    font-family: "Roboto";
-    src: url('../src/public/styles/Roboto-Regular.ttf');
+    font-family: "Dosis";
+    font-weight: 200;
+    src: url("../src/public/styles/fonts/Dosis-ExtraLight.ttf");
+  }
+  @font-face {
+    font-family: "Dosis";
+    font-weight: 300;
+    src: url("../src/public/styles/fonts/Dosis-Light.ttf");
+  }
+  @font-face {
+    font-family: "Dosis";
+    font-weight: 400;
+    src: url("../src/public/styles/fonts/Dosis-Regular.ttf");
+  }
+  @font-face {
+    font-family: "Dosis";
+    font-weight: 500;
+    src: url("../src/public/styles/fonts/Dosis-Medium.ttf");
+  }
+  @font-face {
+    font-family: "Dosis";
+    font-weight: 600;
+    src: url("../src/public/styles/fonts/Dosis-SemiBold.ttf");
+  }
+  @font-face {
+    font-family: "Dosis";
+    font-weight: 700;
+    src: url("../src/public/styles/fonts/Dosis-Bold.ttf");
+  }
+  @font-face {
+    font-family: "Dosis";
+    font-weight: 800;
+    src: url("../src/public/styles/fonts/Dosis-ExtraBold.ttf");
   }
 }

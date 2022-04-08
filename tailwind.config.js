@@ -4,7 +4,12 @@ module.exports = {
     extend: {
       fontFamily: {
         permanent: ["Permanent"],
-        roboto: ["Roboto"],
+        dosis: ["Dosis"],
+      },
+      colors: {
+        bleu: "#023047",
+        jaune: "#FFB703",
+        orange: "#FB8500",
       },
     },
     variants: {},

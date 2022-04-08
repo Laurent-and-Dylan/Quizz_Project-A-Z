@@ -40,17 +40,18 @@ export const Container = {
   },
 
   accueil(username = null) {
-    section.className = "h-[65vh] flex flex-col justify-evenly";
+    section.className =
+      "h-[65vh] flex flex-col justify-evenly font-dosis uppercase font-extrabold";
     section.innerHTML = `
-    <h1 class="text-2xl lg:text-3xl text-center text-yellow-300 font-permanent">Welcome and Enjoy ${
+    <h1 class="text-2xl lg:text-4xl text-center text-jaune">Welcome and Enjoy ${
       username ? username : ""
-    }</h1>
-    <p class="text-2xl lg:text-4xl text-center text-yellow-600 font-permanent">Play now a random Quizz !</p>
+    } !</h1>
+    <p class="text-2xl lg:text-6xl text-center text-orange">Play now a random Quizz !</p>
     ${
       new Button(
         "Play",
         "play",
-        "block w-2/4 md:w-1/3 h-10 mx-auto rounded-xl font-permanent md:h-11 lg:h-14 lg:w-80"
+        "block w-2/4 md:w-1/3 h-10 mx-auto rounded-xl md:h-11 lg:h-14 lg:w-80 font-bold uppercase"
       ).display
     }
     `;
@@ -60,7 +61,7 @@ export const Container = {
     const container = this.Base();
 
     container.innerHTML = `
-      <h1 class="text-2xl text-center text-yellow-600 font-permanent">CHOOSE CATEGORY THEN SELECT QUIZZ</h1>
+      <h1 class="text-2xl text-center text-yellow-600 font-dosis">CHOOSE CATEGORY THEN SELECT QUIZZ</h1>
     `;
 
     const subContainer = this.SubContainer();
