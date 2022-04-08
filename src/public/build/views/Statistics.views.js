@@ -11,7 +11,7 @@ export async function Statistics() {
 
   section.className = "py-[4vh]";
   container.className =
-    "w-3/4 min-h-[57vh] mx-auto bg-cyan-900 rounded-2xl shadow-2xl shadow-black";
+    "w-3/4 min-h-[57vh] mx-auto";
 
   container.innerHTML = Stats.title();
 
