@@ -9,6 +9,6 @@ router.post("/delete", UserControllers.deleted);
 router.get("/logout", UserControllers.logout);
 router.post("/authentifier", UserControllers.alreadyLog);
 router.post("/getuser", UserControllers.getUser);
-router.post("/update", upload, UserControllers.updateProfile);
+router.put("/update", upload, UserControllers.updateProfile);
 
 module.exports = router;

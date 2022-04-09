@@ -6,20 +6,27 @@ import { Randomize_Array } from "../utils/Randomize_Array.js";
  * @param  {} results
  */
 export class QuizzData {
-  constructor(path, method, results = null) {
+  constructor(
+    path,
+    method,
+    results = null,
+    content = "application/json; charset=UTF-8"
+  ) {
     this.path = path;
     this.method = method;
     this.results = results;
+    this.content = content;
     this.init = {
       method: `${this.method}`,
       headers: {
-        "Content-type": "application/json; charset=UTF-8",
+        "Content-type": this.content,
         Connection: "keep-alive",
       },
     };
   }
 
   get fetch() {
+    console.log(this.init);
     return this.request();
   }
 

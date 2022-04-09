@@ -9,7 +9,7 @@ export function ProfileController() {
   let quizz = document.getElementById("quizz");
   let file = document.getElementById("file");
   let img = document.getElementById("img");
-  function updateProfile() {
+  async function updateProfile() {
     let valid = true;
     // password.value.match(/^[\S]{8,150}$/) == null ? (valid = false) : null;
     pseudo.value.match(/^[\w]{5,40}$/) == null ? (valid = false) : null;
@@ -18,16 +18,21 @@ export function ProfileController() {
       : null;
 
     if (valid) {
-      let results = {
-        username: pseudo.value,
-        image: img.src,
-        email: email.value,
-        password: "password.value",
-        bio: "bio.value",
-        token: localStorage.getItem("jwt"),
-      };
+      let results = new FormData();
+      results.append("username", pseudo.value);
+      results.append("email", email.value);
+      results.append("password", "password.value");
+      results.append("token", localStorage.getItem("jwt"));
+      results.append("bio", "bio.value");
+      results.append("user", localStorage.getItem("user"));
+      results.append("file", file.files[0]);
 
-      new QuizzData("user/update", "PUT", results).fetch;
+      let res = await fetch("http://127.0.0.1:3000/api/user/update", {
+        method: "PUT",
+        body: results,
+      });
+
+      console.log(res.json());
     }
   }
   file.addEventListener("change", (e) => {
