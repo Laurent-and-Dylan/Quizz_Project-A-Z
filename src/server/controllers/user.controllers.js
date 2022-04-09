@@ -106,23 +106,25 @@ const deleted = async (req, res) => {
 };
 
 // * @desc Mise à jour du profil utilisateur
-// * @route POST /api/user/update
+// * @route PUT /api/user/update
 
 const updateProfile = async (req, res) => {
-  const { password, image, bio } = req.body;
-
+  const { username, email } = req.body;
   //~ Vérification de la présence du token JWT et de sa validité
   const auth = verifyAuth(req);
-  if (!auth[0]) return res.status(400).send({ message: "Access Denied !" });
+  if (!auth[0]) return res.status(400).send(false);
   else {
     //~ Modification du profil utilisateur
     await User.update(
-      { password, image, bio },
+      { username, email },
       { where: { id_user: auth[0] }, individualHooks: true }
     );
-    res.status(201).send({ message: "Account succesfully edit !" });
+    res.status(201).send(true);
   }
 };
+
+// * @desc Vérification des infos de session pour reconnexion
+// * @route POST /api/user/authentifier
 
 async function alreadyLog(req, res) {
   const { id_user } = req.body;
@@ -137,6 +139,22 @@ async function alreadyLog(req, res) {
   } else res.status(400).send(false);
 }
 
+// * @desc Récupération d'info utilisateur
+// * @route POST /api/user/getUser
+
+async function getUser(req, res) {
+  const { id_user } = req.body;
+  const auth = verifyAuth(req);
+
+  if (id_user == auth[0]) {
+    const results = await User.findOne({
+      where: { id_user },
+      attributes: ["username", "email", "image"],
+    });
+    res.status(200).send({ results });
+  } else res.status(400).send(false);
+}
+
 module.exports = {
   login,
   register,
@@ -144,4 +162,5 @@ module.exports = {
   deleted,
   logout,
   alreadyLog,
+  getUser,
 };

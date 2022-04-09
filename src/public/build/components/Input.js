@@ -3,13 +3,13 @@
 export class Input {
   /**
    * @param  {string} type
-   * @param  {string} placeholder
+   * @param  {string} value
    * @param  {string} id
    * @param  {string} styles
    */
-  constructor(type, placeholder, id, styles = null) {
+  constructor(type, value, id, styles = null) {
     this.type = type;
-    this.placeholder = placeholder;
+    this.value = value;
     this.id = id;
     this.styles = styles;
   }
@@ -20,7 +20,7 @@ export class Input {
 
   create() {
     return `
-      <input type=${this.type} placeholder="${this.placeholder}" id="${this.id}" class="w-80 h-8 block mx-auto mt-8 lg:h-10 rounded-md text-xl text-center text-slate-400 ${this.styles}">
+      <input type=${this.type} value="${this.value}" id="${this.id}" class="h-8 block lg:h-10 rounded-md text-xl text-center text-slate-400 ${this.styles}">
     `;
   }
 }

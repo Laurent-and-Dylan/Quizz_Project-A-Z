@@ -27,22 +27,16 @@ export class QuizzData {
     let res;
     if (this.method != "GET") {
       this.init.body = JSON.stringify(this.results);
-      res = await fetch(
-        `http://127.0.0.1:3000/api/quizz/${this.path}`,
-        this.init
-      );
+      res = await fetch(`http://127.0.0.1:3000/api/${this.path}`, this.init);
       return res.json();
     } else if (this.method === "GET" && this.results != null) {
       res = await fetch(
-        `http://127.0.0.1:3000/api/quizz/${this.path}/${this.results}`,
+        `http://127.0.0.1:3000/api/${this.path}/${this.results}`,
         this.init
       );
       return res.json();
     } else {
-      res = await fetch(
-        `http://127.0.0.1:3000/api/quizz/${this.path}/`,
-        this.init
-      );
+      res = await fetch(`http://127.0.0.1:3000/api/${this.path}/`, this.init);
       return res.json();
     }
   }

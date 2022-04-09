@@ -11,7 +11,10 @@ const User = sequelize.define(
     email: { type: DataTypes.STRING(100) },
     password: { type: DataTypes.STRING },
     insc_date: { type: DataTypes.DATE },
-    image: { type: DataTypes.STRING(100) },
+    image: {
+      type: DataTypes.STRING(100),
+      defaultValue: "./styles/images/avatarH.png",
+    },
     bio: { type: DataTypes.STRING(200) },
     status: { type: DataTypes.BOOLEAN },
   },

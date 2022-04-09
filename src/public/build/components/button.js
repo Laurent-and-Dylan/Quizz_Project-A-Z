@@ -18,11 +18,18 @@ export class Button {
    * @param  {string} text
    * @param  {string} id
    * @param  {string} styles=null
+   * @param  {string} bg=null
    */
-  constructor(text, id, styles = null) {
+  constructor(
+    text,
+    id,
+    styles = null,
+    bg = "bg-gradient-to-l from-amber-500/80 to-yellow-300"
+  ) {
     this.text = text;
     this.id = id;
     this.styles = styles;
+    this.bg = bg;
     this.mq =
       "relative w-1/3 h-9 rounded-xl font-medium md:w-52 md:h-11 lg:h-14 lg:w-80 lg:rounded-2xl lg:text-3xl";
   }
@@ -32,8 +39,16 @@ export class Button {
   }
 
   create() {
+    // if (this.bg == null) {
+    //   this.id.style.setProperty(
+    //     "--bg",
+    //     "linear-gradient(to left, rgba(245, 158, 11, 0.8), rgba(253, 224, 71, 0.8))"
+    //   );
+    // } else {
+    //   this.id.style.this.id.style.setProperty("--bg", `${this.bg}`);
+    // }
     return `
-    <button class="anim_btn ${this.mq} ${this.styles}" id="${this.id}">
+    <button class="anim_btn ${this.mq} ${this.styles} ${this.bg}" id="${this.id}">
       <span></span>
       <span></span>
       <span></span>
@@ -46,7 +61,4 @@ export class Button {
    * @param  {integer} id
    * @param  {string} bg
    */
-  background(id, bg) {
-    id.style.setProperty("--bg", bg);
-  }
 }
