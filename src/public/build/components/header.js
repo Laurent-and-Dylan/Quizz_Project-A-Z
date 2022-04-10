@@ -26,12 +26,12 @@ export const Header = {
     this.Base();
 
     header.className =
-      " flex items-start justify-between h-[20vh] py-4 px-4 font-dosis text-white";
+      " flex items-start justify-between h-[20vh] py-4 px-4 font-dosis text-white uppercase font-extrabold";
     header.innerHTML += `
         <nav class="h-full flex m-4" id="navbar">
               <ul class="flex md:w-[25vw] justify-end lg:justify-between">
-                <li class="stats text-4xl h-12 hidden lg:block font-extrabold hover:scale-105 cursor-pointer">STATS</li>
-                <li class="categories text-4xl h-12 hidden lg:block font-extrabold hover:scale-105 cursor-pointer">CATEGORIES</li>
+                <li class="stats text-4xl h-12 hidden lg:block font-extrabold hover:scale-105 cursor-pointer">Stats</li>
+                <li class="categories text-4xl h-12 hidden lg:block font-extrabold hover:scale-105 cursor-pointer">Categories</li>
                 ${await displayBurger()}
               </ul>
         </nav>

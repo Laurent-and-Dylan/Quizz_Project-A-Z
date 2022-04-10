@@ -9,7 +9,7 @@ import { Game } from "./Game.views.js";
 
 export async function BeforeGame() {
   let results = JSON.parse(localStorage.getItem("Quizz"));
-  if (!results) results = await new QuizzData("random", "GET").fetch;
+  if (!results) results = await new QuizzData("quizz/random", "GET").fetch;
 
   localStorage.setItem("Quizz", JSON.stringify(results));
 

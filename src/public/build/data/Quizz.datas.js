@@ -26,7 +26,6 @@ export class QuizzData {
   }
 
   get fetch() {
-    console.log(this.init);
     return this.request();
   }
 

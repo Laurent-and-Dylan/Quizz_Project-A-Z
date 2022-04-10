@@ -5,8 +5,8 @@ import { Statistics } from "../views/Statistics.views.js";
 import { Categories } from "../views/Categories.views.js";
 import { Authentifier } from "../data/Authentifier.js";
 
-export function HeaderController() {
-  const { username } = Authentifier();
+export async function HeaderController() {
+  const { username } = await Authentifier();
   const categories = document.querySelectorAll(".categories");
   const stats = document.querySelectorAll(".stats");
 

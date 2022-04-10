@@ -27,9 +27,12 @@ async function LoginControllers(param1, param2) {
 
   if (!user || !pass) return alert("Veuillez remplir tout les champs");
 
-  const { connexion, token, username, id_user } = await GetUser(user, pass);
+  const { connexion, token, username, id_user, errors } = await GetUser(
+    user,
+    pass
+  );
 
-  if (!connexion) return error("Wrong Informations !", "section", username);
+  if (!connexion) return error(`${errors}`, "section", username);
 
   localStorage.setItem("jwt", token);
   localStorage.setItem("user", id_user);
@@ -43,14 +46,13 @@ async function RegisterControllers(param1, param2, param3) {
   const password = param3.value.match(/^[\S]{8,150}$/);
 
   if (email && username && password) {
-    const { register, token, id_user } = await Register(
+    const { register, token, id_user, errors } = await Register(
       email[0],
       username[0],
       password[0]
     );
 
-    console.log(id_user);
-    if (!register) error("Informations already exist !", "section", mail);
+    if (!register) error(errors, "section", mail);
     else {
       localStorage.setItem("jwt", token);
       localStorage.setItem("user", id_user);

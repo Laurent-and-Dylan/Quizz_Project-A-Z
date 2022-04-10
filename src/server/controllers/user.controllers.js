@@ -23,11 +23,11 @@ const register = async (req, res) => {
     if (user.username === username) {
       return res
         .status(400)
-        .send({ register: false, message: `${username} already exist !` });
+        .send({ register: false, errors: `${username} already exist !` });
     } else if (user.email === email) {
       return res
         .status(400)
-        .send({ register: false, message: `${email} already exist !` });
+        .send({ register: false, errors: `${email} already exist !` });
     }
   }
 
@@ -50,7 +50,8 @@ const login = async (req, res) => {
   const user = await User.findOne({
     where: { [Op.or]: { username: pseudo, email: pseudo } },
   });
-  if (!user) return res.status(404).send({ connexion: false });
+  if (!user)
+    return res.status(404).send({ connexion: false, errors: "Wrong Pseudo !" });
 
   //~ Vérification de la coherence des passwords et création d'un token web sous format JSON placé dans un cookie
   if (user.validPassword(password, user.dataValues.password)) {
@@ -63,7 +64,10 @@ const login = async (req, res) => {
       username: user.username,
       id_user: user.id_user,
     });
-  } else return res.status(400).send({ connexion: false });
+  } else
+    return res
+      .status(400)
+      .send({ connexion: false, errors: "Wrong Password !" });
 };
 
 // * @desc Déconnexion d'un utilisateur

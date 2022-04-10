@@ -667,12 +667,20 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-row-start: 3;
 }
 
+.row-start-4 {
+  grid-row-start: 4;
+}
+
 .row-end-6 {
   grid-row-end: 6;
 }
 
 .row-end-3 {
   grid-row-end: 3;
+}
+
+.row-end-4 {
+  grid-row-end: 4;
 }
 
 .m-4 {
@@ -1759,6 +1767,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     display: flex;
   }
 
+  .md\:grid {
+    display: grid;
+  }
+
   .md\:h-11 {
     height: 2.75rem;
   }
@@ -1839,8 +1851,20 @@ Ensure the default browser behavior of the `hidden` attribute.
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .md\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .md\:grid-rows-2 {
     grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+
+  .md\:grid-rows-3 {
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+  }
+
+  .md\:grid-rows-4 {
+    grid-template-rows: repeat(4, minmax(0, 1fr));
   }
 
   .md\:flex-wrap {

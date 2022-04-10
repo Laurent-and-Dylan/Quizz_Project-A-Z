@@ -1,7 +1,7 @@
 "use-strict";
 
 import { Button } from "./Button.js";
-import { Input } from "./Input.js";
+// import { Input } from "./Input.js";
 
 const section = document.querySelector("section");
 
@@ -98,9 +98,9 @@ export const Container = {
   },
 
   createQuizz() {
-    const container = this.Base();
+    // const container = this.Base();
 
-    container.classList.add("flex", "justify-end", "flex-wrap");
+    // container.classList.add("flex", "justify-end", "flex-wrap");
     container.innerHTML = `
       <h1 class="w-1/3 text-center text-2xl text-white font-extrabold"><span id="left">1</span>/<span id="total">2</span></h1>
       <input id="title" class="w-1/3 text-center text-2xl text-white font-extrabold bg-transparent" placeholder="Name of Quizz">
@@ -117,18 +117,18 @@ export const Container = {
     );
   },
 
-  profile() {
-    const container = this.Base();
+  // profile() {
+  //   const container = this.Base();
 
-    container.className = "grid grid-cols-4 grid-rows-3";
-    container.innerHTML = `${new Input("text", "Pseudo", "pseudo").display}`;
-    const subContainer = this.SubContainer();
-    subContainer.innerHTML `
+  //   container.className = "grid grid-cols-4 grid-rows-3";
+  //   container.innerHTML = `${new Input("text", "Pseudo", "pseudo").display}`;
+  //   const subContainer = this.SubContainer();
+  //   subContainer.innerHTML `
     
-    `
-    container.innerHTML += `${
-      new Input("password", "Password", "pass").display
-    }`;
+  //   `
+  //   container.innerHTML += `${
+  //     new Input("password", "Password", "pass").display
+  //   }`;
 
     // container.innerHTML = `
     // <article class="w-11/12 mx-auto pt-4 rounded-3xl bg-sky-600 shadow-xl shadow-slate-900/70">
@@ -154,7 +154,7 @@ export const Container = {
     //   <button id='quizz' class="w-1/3 mx-auto my-8 py-8 text-3xl font-bold text-center text-white bg-amber-500 rounded-3xl border-4 hover:scale-105 shadow-xl shadow-slate-900/70">View your quizzes</button>
     // </article>
     // `;
-  },
+  // },
 
   editQuizz(quizz) {
     const container = this.Base();
