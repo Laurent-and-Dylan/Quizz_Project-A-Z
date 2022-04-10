@@ -655,6 +655,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-column-end: 5;
 }
 
+.col-end-6 {
+  grid-column-end: 6;
+}
+
 .row-start-2 {
   grid-row-start: 2;
 }
@@ -671,6 +675,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   grid-row-start: 4;
 }
 
+.row-start-6 {
+  grid-row-start: 6;
+}
+
 .row-end-6 {
   grid-row-end: 6;
 }
@@ -681,6 +689,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .row-end-4 {
   grid-row-end: 4;
+}
+
+.row-end-5 {
+  grid-row-end: 5;
 }
 
 .m-4 {
@@ -754,6 +766,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .my-1 {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
+}
+
+.mx-10 {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
 }
 
 .mt-1 {
@@ -922,6 +939,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 116px;
 }
 
+.h-3\/4 {
+  height: 75%;
+}
+
+.h-\[50vh\] {
+  height: 50vh;
+}
+
 .min-h-\[65vh\] {
   min-height: 65vh;
 }
@@ -1054,6 +1079,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .w-\[116px\] {
   width: 116px;
+}
+
+.w-11 {
+  width: 2.75rem;
 }
 
 .-translate-x-2\/4 {
@@ -1791,6 +1820,14 @@ Ensure the default browser behavior of the `hidden` attribute.
     height: 2rem;
   }
 
+  .md\:h-\[20vh\] {
+    height: 20vh;
+  }
+
+  .md\:h-\[30vh\] {
+    height: 30vh;
+  }
+
   .md\:w-52 {
     width: 13rem;
   }
@@ -1855,6 +1892,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
+  .md\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
   .md\:grid-rows-2 {
     grid-template-rows: repeat(2, minmax(0, 1fr));
   }
@@ -1865,6 +1906,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
   .md\:grid-rows-4 {
     grid-template-rows: repeat(4, minmax(0, 1fr));
+  }
+
+  .md\:grid-rows-5 {
+    grid-template-rows: repeat(5, minmax(0, 1fr));
   }
 
   .md\:flex-wrap {

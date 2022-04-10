@@ -15,7 +15,7 @@ export const Header = {
     this.Base();
 
     header.className =
-      "flex items-start justify-between h-[20vh] font-dosis uppercase font-extrabold text-jaune text-3xl";
+      "flex items-start justify-between md:h-[20vh] font-dosis uppercase font-extrabold text-jaune text-3xl";
     header.innerHTML += `
       <h1 class="absolute left-2/4 top-80 -translate-x-2/4 md:top-6">${h1}</h1>
       <h2 class="mt-6 mr-4 cursor-pointer" id="${h2}">${h2}</h2>
@@ -29,7 +29,7 @@ export const Header = {
       " flex items-start justify-between h-[20vh] py-4 px-4 font-dosis text-white uppercase font-extrabold";
     header.innerHTML += `
         <nav class="h-full flex m-4" id="navbar">
-              <ul class="flex md:w-[25vw] justify-end lg:justify-between">
+              <ul class="flex md:w-[30vw] justify-end lg:justify-between">
                 <li class="stats text-4xl h-12 hidden lg:block font-extrabold hover:scale-105 cursor-pointer">Stats</li>
                 <li class="categories text-4xl h-12 hidden lg:block font-extrabold hover:scale-105 cursor-pointer">Categories</li>
                 ${await displayBurger()}
