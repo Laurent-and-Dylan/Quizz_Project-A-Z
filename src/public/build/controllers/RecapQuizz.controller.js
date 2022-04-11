@@ -20,10 +20,10 @@ export function RecapQuizzController() {
 }
 
 async function formatData() {
-  const quests = document.querySelectorAll("[data-quest]");
-  const resps = document.querySelectorAll("[data-resp]");
-  const title = document.getElementById("title");
-  const category = document.getElementById("category");
+  let quests = document.querySelectorAll("[data-quest]");
+  let resps = document.querySelectorAll("[data-resp]");
+  let title = document.getElementById("title");
+  let category = document.getElementById("category");
 
   let valid = [];
   let ok = true;
@@ -48,6 +48,7 @@ async function formatData() {
   if (ok) {
     let quizz = JSON.parse(localStorage.getItem("NewQuizz"));
     quizz.name = title.value;
+    quizz.id_category = category.value
 
     for (let q in quizz.quests) {
       const resps = document.querySelectorAll(`[data-resp='${q}']`);

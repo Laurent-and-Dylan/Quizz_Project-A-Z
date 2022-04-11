@@ -28,10 +28,12 @@ const User = sequelize.define(
         const salt = bcrypt.genSaltSync(10, "a");
         user.password = bcrypt.hashSync(user.password, salt);
       },
-      beforeUpdate: (user) => {
-        const salt = bcrypt.genSaltSync(10, "a");
-        user.password = bcrypt.hashSync(user.password, salt);
-      },
+      // beforeUpdate: (user) => {
+      //   if (user.password !== "password.value") {
+      //     const salt = bcrypt.genSaltSync(10, "a");
+      //     user.password = bcrypt.hashSync(user.password, salt);
+      //   }
+      // },
     },
   }
 );

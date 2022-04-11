@@ -14,8 +14,9 @@ export async function Profile() {
   };
   let { results } = await new QuizzData("user/getUser", "POST", user).fetch;
   let container = Container.Base();
-  container.className = "grid grid-cols-4 grid-rows-3 w-1/2 mx-auto";
-  container.innerHTML = `<h1 class="col-start-1 col-end-5 text-2xl lg:text-4xl text-center text-jaune">Account Informations</h1>`;
+  container.className =
+    "py-[4vh] min-h-[65vh] grid grid-cols-4 grid-rows-3 w-1/2 mx-auto";
+  container.innerHTML = `<h1 class="col-start-1 col-end-5 text-2xl lg:text-4xl text-center text-jaune uppercase font-extrabold">Account Informations</h1>`;
 
   let subContainer = Container.SubContainer();
   subContainer.className = "col-start-1 col-end-4";

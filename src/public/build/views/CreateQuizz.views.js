@@ -32,9 +32,7 @@ export function CreateQuizz() {
   let subContainer = Container.SubContainer();
   subContainer.className = "col-start-1 col-end-6 row-start-2 row-end-5";
   subContainer.innerHTML = create.Base();
-  // Container.createQuizz();
-  // create.Base();
-
+  
   //~ Logic of create view
   CreateQuizzController();
 }
