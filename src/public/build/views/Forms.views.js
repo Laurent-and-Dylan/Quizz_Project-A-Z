@@ -1,6 +1,7 @@
 "use-strict";
 
 import { Container } from "../components/container.js";
+import { form } from "../components/Form.js";
 import { Header } from "../components/header.js";
 import {
   FormsControllers,
@@ -8,19 +9,54 @@ import {
   RegisterControllers,
 } from "../controllers/Forms.controller.js";
 
+//^ Login View Function
 function LoginForm() {
-  Header.form("Login Form :", "Register");
-  Container.form("LogIn", "Email / Username", "Password");
-  FormsControllers();
+  //~ Reset section 
+  let section = document.querySelector("section");
+  section.className = "";
 
+  //~ Create header
+  Header.form("Register");
+
+  //~ Create main content
+  let container = Container.Base();
+  container.className =
+    "text-center font-dosis min-h-[65vh] flex flex-col items-center justify-center ";
+  container.innerHTML = `
+    <h1 class="uppercase font-extrabold text-jaune text-3xl">Login Form :</h1>
+    ${form("LogIn", "Email / Username", "Password")}
+  `;
+
+  //! fail (its header controller) 
+  FormsControllers();
+  
+  //~ Call logics of form
   submit.addEventListener("click", () => LoginControllers(username, password));
 }
 
+//^ Register View Function 
 function RegisterForm() {
-  Header.form("Register Form :", "LogIn");
-  Container.form("Register", "Username", "Password", "Email");
+  //~ Reset section 
+  let section = document.querySelector("section");
+  section.className = "";
+
+  //~ Create header
+  Header.form("LogIn");
+
+  //~ Create main content
+  let container = Container.Base();
+  container.className =
+    "text-center font-dosis min-h-[65vh] flex flex-col items-center justify-center ";
+  container.innerHTML = `
+    <h1 class="uppercase font-extrabold text-jaune text-3xl">Login Form :</h1>
+    ${form("LogIn", "Email / Username", "Password")}
+  `;
+  form("Register", "Username", "Password", "Email");
+
+  //! fail (its header controller) 
   FormsControllers();
 
+  //~ Call logics of form
   submit.addEventListener("click", () =>
     RegisterControllers(mail, username, password)
   );

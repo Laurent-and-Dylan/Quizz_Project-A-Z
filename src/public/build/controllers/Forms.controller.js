@@ -10,10 +10,10 @@ import { Accueil } from "../views/Accueil.views.js";
 import { LoginForm, RegisterForm } from "../views/Forms.views.js";
 
 function FormsControllers() {
-  const h2 = document.querySelector(`header > h2`);
+  const h1 = document.querySelector(`header > h1`);
 
-  h2.addEventListener("click", () => {
-    if (h2.textContent === "Register") {
+  h1.addEventListener("click", () => {
+    if (h1.textContent === "Register") {
       RegisterForm();
     } else {
       LoginForm();

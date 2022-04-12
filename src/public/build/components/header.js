@@ -11,14 +11,13 @@ export const Header = {
     `;
   },
 
-  form(h1, h2) {
+  form(h1) {
     this.Base();
 
     header.className =
       "flex items-start justify-between md:h-[20vh] font-dosis uppercase font-extrabold text-jaune text-3xl";
     header.innerHTML += `
-      <h1 class="absolute left-2/4 top-80 -translate-x-2/4 md:top-6">${h1}</h1>
-      <h2 class="mt-6 mr-4 cursor-pointer" id="${h2}">${h2}</h2>
+      <h1 class="mt-6 mr-4 cursor-pointer" id="${h1}">${h1}</h1>
     `;
   },
 
