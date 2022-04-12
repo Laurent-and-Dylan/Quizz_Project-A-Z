@@ -12,14 +12,14 @@ export function quizz(quizz) {
 }
 
 export function quizzEdit(quizz) {
-  const container = document.getElementById("container");
-
-  return (container.innerHTML += `
-    <article class="flex items-center w-10/12 h-10 mx-auto font-white font-bold">
-      <h1 class="w-1/4">${quizz.name}</h1>
-      <div id="rate" class="w-2/4 flex justify-center"><img src="./styles/images/star.png" class="h-6 w-6"></div>
-      <button data-edit="${quizz.id_quizz}" class="h-8 w-8 mx-4"><img src="./styles/images/edit.svg"></button>
-      <button data-remove="${quizz.id_quizz}" class="h-8 w-8"><img src="./styles/images/delete.svg"</button>
+  return `
+    <article class="flex items-center justify-between h-10 mx-auto my-2 font-bold text-center">
+      <h1 class="w-1/3 text-white">${quizz.name}</h1>
+      <div id="rate" class="w-1/3"><img src="./styles/images/star.png" class="h-6 w-6 mx-auto"></div>
+      <div class="w-1/3 flex items-center justify-center">
+        <button data-edit="${quizz.id_quizz}" class="h-8 w-8 mx-4"><img src="./styles/images/edit.svg"></button>
+        <button data-remove="${quizz.id_quizz}" class="h-8 w-8"><img src="./styles/images/delete.svg"</button>
+      </div>
     </article>
-      `);
+      `;
 }

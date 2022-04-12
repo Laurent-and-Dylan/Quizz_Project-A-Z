@@ -25,8 +25,7 @@ export const Container = {
   },
 
   form(submit, input1, input2, input3 = null) {
-    const register = input3
-      ? `<input type="email" placeholder="${input3}" minlength="7" maxlength="40" class="w-80 h-8 mt-8 block mx-auto lg:w-1/3 lg:h-10 rounded-md text-xl text-center text-slate-400" id="mail">`
+    const register = input3 ? `<input type="email" placeholder="${input3}" minlength="7" maxlength="40" class="w-80 h-8 mt-8 block mx-auto lg:w-1/3 lg:h-10 rounded-md text-xl text-center text-slate-400" id="mail">`
       : "";
 
     section.classList.replace("h-[85vh]", "h-[65vh]");

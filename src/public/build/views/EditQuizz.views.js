@@ -5,11 +5,14 @@ import { Edit } from "../components/edit.js";
 import { EditQuizzController } from "../controllers/EditQuizz.controller.js";
 
 export function EditQuizz() {
-  const section = document.querySelector("section");
-  const results = JSON.parse(localStorage.getItem("EditQuizz"));
+  let results = JSON.parse(localStorage.getItem("EditQuizz"));
+  let section = document.querySelector("section");
   section.innerHTML = "";
 
-  const subContainer = Container.editQuizz(results);
+  let container = Container.Base();
+  container.className = "min-h-[65vh] py-8"
+  let subContainer = Container.SubContainer();
+  // let subContainer = Container.editQuizz(results);
 
   for (let r in results.quests) {
     subContainer.innerHTML += Edit.quest(results.quests[r]);
