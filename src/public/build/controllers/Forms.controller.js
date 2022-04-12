@@ -14,7 +14,7 @@ function FormsControllers() {
 
   h1.addEventListener("click", () => {
     if (h1.textContent === "Register") {
-      RegisterForm();
+      RegisterForm()
     } else {
       LoginForm();
     }

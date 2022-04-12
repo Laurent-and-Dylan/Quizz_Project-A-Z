@@ -24,51 +24,36 @@ export const Container = {
     return subContainer;
   },
 
-  // form(submit, input1, input2, input3 = null) {
-  //   const register = input3 ? `<input type="email" placeholder="${input3}" minlength="7" maxlength="40" class="w-80 h-8 mt-8 block mx-auto lg:w-1/3 lg:h-10 rounded-md text-xl text-center text-slate-400" id="mail">`
-  //     : "";
-
-  //   section.classList.replace("h-[85vh]", "h-[65vh]");
-  //   section.classList.replace("justify-evenly", "justify-center");
+  // accueil(username = null) {
+  //   section.className =
+  //     "h-[65vh] flex flex-col justify-evenly font-dosis uppercase font-extrabold";
   //   section.innerHTML = `
-  //     ${register}
-  //     <input type="text" placeholder="${input1}" class="w-80 h-8 block mx-auto mt-8 lg:w-1/3 lg:h-10 rounded-md text-xl text-center text-slate-400" id="username">
-  //     <input type="password" placeholder="${input2}" class="w-80 h-8 block mx-auto mt-8 lg:w-1/3 lg:h-10 rounded-md text-xl text-center text-slate-400" id="password">
-  //     ${new Button(submit, "submit", "mx-auto mt-8").display}
-      
-  //     `;
+  //   <h1 class="text-2xl lg:text-4xl text-center text-jaune">Welcome and Enjoy ${
+  //     username ? username : ""
+  //   } !</h1>
+  //   <p class="text-2xl lg:text-6xl text-center text-orange">Play now a random Quizz !</p>
+  //   ${
+  //     new Button(
+  //       "Play",
+  //       "play",
+  //       "block w-2/4 md:w-1/3 h-10 mx-auto rounded-xl md:h-11 lg:h-14 lg:w-80 font-bold uppercase"
+  //     ).display
+  //   }
+  //   `;
   // },
 
-  accueil(username = null) {
-    section.className =
-      "h-[65vh] flex flex-col justify-evenly font-dosis uppercase font-extrabold";
-    section.innerHTML = `
-    <h1 class="text-2xl lg:text-4xl text-center text-jaune">Welcome and Enjoy ${
-      username ? username : ""
-    } !</h1>
-    <p class="text-2xl lg:text-6xl text-center text-orange">Play now a random Quizz !</p>
-    ${
-      new Button(
-        "Play",
-        "play",
-        "block w-2/4 md:w-1/3 h-10 mx-auto rounded-xl md:h-11 lg:h-14 lg:w-80 font-bold uppercase"
-      ).display
-    }
-    `;
-  },
+    // categories() {
+    //   const container = this.Base();
 
-  categories() {
-    const container = this.Base();
+    //   container.innerHTML = `
+    //     <h1 class="text-4xl text-center text-jaune uppercase">Choose your categories :</h1>
+    //   `;
 
-    container.innerHTML = `
-      <h1 class="text-4xl text-center text-jaune uppercase">Choose your categories :</h1>
-    `;
+    //   const subContainer = this.SubContainer();
 
-    const subContainer = this.SubContainer();
-
-    subContainer.className =
-      "w-4/5 grid grid-cols-3 gap-8 my-10 mx-auto p-10 justify-items-center";
-  },
+    //   subContainer.className =
+    //     "w-4/5 grid grid-cols-3 gap-8 my-10 mx-auto p-10 justify-items-center";
+    // },
 
   quizz() {
     const container = this.Base();
@@ -115,45 +100,6 @@ export const Container = {
       "my-8"
     );
   },
-
-  // profile() {
-  //   const container = this.Base();
-
-  //   container.className = "grid grid-cols-4 grid-rows-3";
-  //   container.innerHTML = `${new Input("text", "Pseudo", "pseudo").display}`;
-  //   const subContainer = this.SubContainer();
-  //   subContainer.innerHTML `
-    
-  //   `
-  //   container.innerHTML += `${
-  //     new Input("password", "Password", "pass").display
-  //   }`;
-
-    // container.innerHTML = `
-    // <article class="w-11/12 mx-auto pt-4 rounded-3xl bg-sky-600 shadow-xl shadow-slate-900/70">
-    //   <h1 class="mb-4 text-center font-semibold font-xl">Informations générale</h1>
-    //     <article class="pl-8 flex items-center hover:bg-sky-700 cursor-pointer">
-    //       <h1 class="w-1/4 font-bold ">Photo</h1>
-    //       <p class="w-2/3">Ajoutez une photo pour personalisez votre compte</p>
-    //       <figure>
-    //         <img src="./styles/images/avatarH.png " alt"" class="w-14 h-14">
-    //       </figure>
-    //     </article>
-    //     <article class="pl-8 flex items-center h-14 hover:bg-sky-700 cursor-pointer">
-    //       <h1 class="w-1/4 font-bold">Pseudo</h1>
-    //       <p class="w-2/3">Jean Heaud</p>
-    //     </article>
-    //     <article class="pl-8 flex items-center h-14 hover:bg-sky-700 cursor-pointer rounded-b-3xl">
-    //       <h1 class="w-1/4 font-bold">Password</h1>
-    //       <p class="w-2/3">*************</p>
-    //     </article>
-    // </article>
-    // <article class="w-11/12 mx-auto my-12 flex rounded-3xl bg-sky-600 shadow-xl shadow-slate-900/70">
-    //   <button id='create' class="w-1/3 mx-auto my-8 py-8 text-3xl font-bold text-center text-rose-600 bg-white rounded-3xl border-4 border-rose-600 hover:scale-105 shadow-xl shadow-slate-900/70">Create a quizz</button>
-    //   <button id='quizz' class="w-1/3 mx-auto my-8 py-8 text-3xl font-bold text-center text-white bg-amber-500 rounded-3xl border-4 hover:scale-105 shadow-xl shadow-slate-900/70">View your quizzes</button>
-    // </article>
-    // `;
-  // },
 
   editQuizz(quizz) {
     const container = this.Base();

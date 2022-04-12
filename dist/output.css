@@ -939,6 +939,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: max-content;
 }
 
+.h-20 {
+  height: 5rem;
+}
+
 .min-h-\[65vh\] {
   min-height: 65vh;
 }

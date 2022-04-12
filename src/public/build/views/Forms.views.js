@@ -48,10 +48,9 @@ function RegisterForm() {
   container.className =
     "text-center font-dosis min-h-[65vh] flex flex-col items-center justify-center ";
   container.innerHTML = `
-    <h1 class="uppercase font-extrabold text-jaune text-3xl">Login Form :</h1>
-    ${form("LogIn", "Email / Username", "Password")}
+    <h1 class="uppercase font-extrabold text-jaune text-3xl">Register Form :</h1>
+    ${form("Register", "Username", "Password", "Email")}
   `;
-  form("Register", "Username", "Password", "Email");
 
   //! fail (its header controller) 
   FormsControllers();
