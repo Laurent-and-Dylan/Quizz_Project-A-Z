@@ -14,7 +14,7 @@ export async function Categories() {
 
   //~ Display content title
   let container = Container.Base();
-  container.className = "h-full sm:overflow-hidden sm:w-4/5 mx-auto relative";
+  container.className = "min-h-[65vh] sm:overflow-hidden sm:w-4/5 mx-auto relative";
   container.innerHTML = `<h1 class="text-4xl text-center text-jaune uppercase font-extrabold">Choose your categories :</h1>`;
   section.innerHTML += `
   <img id="arrow_r" src="./styles/images/arrow.png" class="hidden sm:block absolute top-1/2 right-[5vw] -translate-y-1/2 cursor-pointer z-50 hover:scale-105 ">

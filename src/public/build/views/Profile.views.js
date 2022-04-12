@@ -30,7 +30,7 @@ export async function Profile() {
     }
     ${inputFile()}
    `;
-  container.innerHTML += `<img id="img" src="./uploads/${results.image}" class="place-self-center h-[116px] w-[116px]">`;
+  container.innerHTML += `<img id="img" src="./uploads/${results.image}" class="place-self-center content-center h-[116px] w-[116px]">`;
   container.innerHTML += `
   ${
     new Button(

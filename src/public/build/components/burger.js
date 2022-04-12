@@ -10,17 +10,17 @@ async function displayBurger() {
   let connect;
   if (auth) {
     connect = `
-      <li class="submenu w-auto mt-4 invisible text-white px-4 hover:box-border hover:bg-sky-800 cursor-pointer font-bold" id="profile">Profile</li>
-      <li class="stats submenu w-auto mt-4 invisible lg:hidden text-white px-4 hover:box-border hover:bg-sky-800 cursor-pointer font-bold">Stats</li>
-      <li class="categories submenu w-auto mt-4 invisible lg:hidden text-white px-4 hover:box-border hover:bg-sky-800 cursor-pointer font-bold">Categories</li>
-      <li class="submenu w-auto mt-4 invisible text-white px-4 hover:box-border hover:bg-sky-800 cursor-pointer font-bold" id="logout">Log Out</li>
+      <li class="submenu w-auto mt-4 invisible text-white pr-4 hover:box-border hover:bg-sky-800 cursor-pointer font-bold" id="profile">Profile</li>
+      <li class="stats submenu w-auto mt-4 invisible lg:hidden text-white pr-4 hover:box-border hover:bg-sky-800 cursor-pointer font-bold">Stats</li>
+      <li class="categories submenu w-auto mt-4 invisible lg:hidden text-white pr-4 hover:box-border hover:bg-sky-800 cursor-pointer font-bold">Categories</li>
+      <li class="submenu w-auto mt-4 invisible text-white pr-4 hover:box-border hover:bg-sky-800 cursor-pointer font-bold" id="logout">Log Out</li>
     `;
   } else {
     connect = `
-      <li class="submenu w-auto mt-4 invisible text-white px-4 hover:box-border hover:bg-sky-800 cursor-pointer font-bold" id="login">LogIn</li>
-      <li class="submenu w-auto mt-4 invisible text-white px-4 hover:box-border hover:bg-sky-800 cursor-pointer font-bold" id="register">Register</li>
-      <li class="submenu stats w-auto mt-4 invisible lg:hidden text-white px-4 hover:box-border hover:bg-sky-800 cursor-pointer font-bold">Stats</li>
-      <li class="submenu categories w-auto mt-4 invisible lg:hidden text-white px-4 hover:box-border hover:bg-sky-800 cursor-pointer font-bold">Categories</li>
+      <li class="submenu w-auto mt-4 invisible text-white pr-4 hover:box-border hover:bg-sky-800 cursor-pointer font-bold" id="login">LogIn</li>
+      <li class="submenu w-auto mt-4 invisible text-white pr-4 hover:box-border hover:bg-sky-800 cursor-pointer font-bold" id="register">Register</li>
+      <li class="submenu stats w-auto mt-4 invisible lg:hidden text-white pr-4 hover:box-border hover:bg-sky-800 cursor-pointer font-bold">Stats</li>
+      <li class="submenu categories w-auto mt-4 invisible lg:hidden text-white pr-4 hover:box-border hover:bg-sky-800 cursor-pointer font-bold">Categories</li>
     `;
   }
 

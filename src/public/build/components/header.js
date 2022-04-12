@@ -29,9 +29,9 @@ export const Header = {
       " flex items-start justify-between h-[20vh] py-4 px-4 font-dosis text-white uppercase font-extrabold";
     header.innerHTML += `
         <nav class="h-full flex m-4" id="navbar">
-              <ul class="flex md:w-[30vw] justify-end lg:justify-between">
-                <li class="stats text-4xl h-12 hidden lg:block font-extrabold hover:scale-105 cursor-pointer">Stats</li>
-                <li class="categories text-4xl h-12 hidden lg:block font-extrabold hover:scale-105 cursor-pointer">Categories</li>
+              <ul class="flex md:w-min justify-end lg:justify-between text-2xl font-bold">
+                <li class="stats h-12 hidden lg:block hover:scale-105 cursor-pointer">Stats</li>
+                <li class="categories h-12 ml-[70px] hidden lg:block hover:scale-105 cursor-pointer">Categories</li>
                 ${await displayBurger()}
               </ul>
         </nav>
