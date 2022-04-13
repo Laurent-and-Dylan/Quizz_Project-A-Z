@@ -42,24 +42,24 @@ export const Container = {
   //   `;
   // },
 
-    // categories() {
-    //   const container = this.Base();
+  // categories() {
+  //   const container = this.Base();
 
-    //   container.innerHTML = `
-    //     <h1 class="text-4xl text-center text-jaune uppercase">Choose your categories :</h1>
-    //   `;
+  //   container.innerHTML = `
+  //     <h1 class="text-4xl text-center text-jaune uppercase">Choose your categories :</h1>
+  //   `;
 
-    //   const subContainer = this.SubContainer();
+  //   const subContainer = this.SubContainer();
 
-    //   subContainer.className =
-    //     "w-4/5 grid grid-cols-3 gap-8 my-10 mx-auto p-10 justify-items-center";
-    // },
+  //   subContainer.className =
+  //     "w-4/5 grid grid-cols-3 gap-8 my-10 mx-auto p-10 justify-items-center";
+  // },
 
   quizz() {
     const container = this.Base();
 
     container.innerHTML = `
-      <h1 class="text-2xl font-extrabold text-center text-orange-500">SELECT QUIZZ</h1>
+      <h1 class="text-3xl font-extrabold text-center text-jaune">SELECT QUIZZ</h1>
     `;
 
     const subContainer = this.SubContainer();
@@ -77,7 +77,7 @@ export const Container = {
     section.classList.add("text-center");
     section.innerHTML = `
       <span class="text-8xl text-white font-bold" id="timer">1</span>
-      <h1 class="text-4xl text-pink-700 font-bold">Let's Play !</h1>
+      <h1 class="text-4xl text-orange font-bold">Let's Play !</h1>
     `;
   },
 
@@ -105,7 +105,7 @@ export const Container = {
     const container = this.Base();
     // class="h-[65vh] flex flex-col justify-evenly text-center"
     container.classList.add("min-h-[65vh]", "py-8");
-    container.innerHTML = `<input type="text" data-quizz="${quizz.id_quizz}" value="${quizz.name}">`;
+    container.innerHTML = `<input type="text" data-quizz="${quizz.id_quizz}" value="${quizz.name}" class="text-jaune">`;
 
     return this.SubContainer();
   },
@@ -113,13 +113,13 @@ export const Container = {
   game() {
     const container = this.Base();
     container.className =
-      "grid grid-cols-3 grid-row-6 w-11/12 p-4 bg-white/50 mx-auto rounded-2xl text-xl md:flex md:flex-wrap md:h-[50vh] md:text-2xl md:text-center";
+      "grid grid-cols-3 grid-row-6 w-11/12 p-4 mx-auto rounded-2xl text-xl text-orange md:flex md:flex-wrap md:h-[50vh] md:text-2xl md:text-center";
     container.innerHTML = `
-        <h2 class="h-min md:w-[10%] font-bold text-sky-900 text-2xl lg:text-3xl">
+        <h2 class="h-min md:w-[10%] font-bold text-2xl lg:text-3xl">
           <span id="time">20</span> s
         </h2>
-        <h2 class="row-start-2 col-start-1 col-end-4 px-4 py-2 md:w-[80%] text-sky-900 text-center" id="question">Question</h2>
-        <h2 class="row-start-1 col-start-3 w-full h-min md:w-[10%] font-bold text-sky-900 text-2xl lg:text-3xl" id="rest"></h2>
+        <h2 class="row-start-2 col-start-1 col-end-4 px-4 py-2 md:w-[80%] text-center text-white" id="question">Question</h2>
+        <h2 class="row-start-1 col-start-3 w-full h-min md:w-[10%] font-bold text-2xl lg:text-3xl" id="rest"></h2>
     `;
 
     const subContainer = this.SubContainer();

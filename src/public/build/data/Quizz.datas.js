@@ -87,12 +87,11 @@ export async function GetAllQuizz(category) {
 }
 
 export async function GetQuizz(quizz) {
-  const { results } = await fetch(
+  const  results  = await fetch(
     `http://127.0.0.1:3000/api/quizz/${quizz}`
   ).then((res) => {
     return res.json();
   });
-
   if (results) {
     for (let i in results[1]) {
       results[1][i] = await Randomize_Array(results[1][i]);

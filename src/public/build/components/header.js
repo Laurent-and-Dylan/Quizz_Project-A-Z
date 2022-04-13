@@ -43,7 +43,7 @@ export const Header = {
 
     header.innerHTML = `
     <img class="w-44 cursor-pointer" src="./styles/images/Logo.png" alt="" id="logo"/>
-    <h1 class="absolute left-2/3 top-20 text-xl md:relative md:top-0 md:left-0 md:text-3xl text-center text-white font-extrabold" id="name_quizz">Quizzz<br>${
+    <h1 class="absolute left-2/3 top-20 text-xl md:top-4 md:left-1/2 -translate-x-1/2 md:text-3xl text-center text-jaune font-extrabold" id="name_quizz">Quizzz<br>${
       results[0]
     }</h1>
     ${await displayBurger()}

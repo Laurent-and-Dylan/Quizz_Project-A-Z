@@ -9,8 +9,10 @@ export function QuizzController() {
 
   quizz.forEach((quiz) => {
     quiz.addEventListener("click", async (e) => {
-      let result = await GetQuizz(e.target.dataset.quizz);
-      localStorage.setItem("Quizz", JSON.stringify(result));
+      let id = e.target.dataset.quizz;
+      console.log(id);
+      await GetQuizz(id);
+      // localStorage.setItem("Quizz", JSON.stringify(result));
 
       subContainer.innerHTML += new Button(
         "Play",
@@ -19,7 +21,7 @@ export function QuizzController() {
       ).display;
       play.classList.replace("relative", "fixed");
 
-      play.addEventListener("click", () => BeforeGame("lala", true));
+      play.addEventListener("click", () => BeforeGame());
     });
   });
 }

@@ -9,7 +9,5 @@ export function error(content, parent, reference) {
   element.setAttribute("id", "error");
   element.textContent = content;
 
-  console.log(element, reference);
-
   parent.insertBefore(element, reference);
 }
