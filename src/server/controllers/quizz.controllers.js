@@ -175,9 +175,10 @@ module.exports.createQuizz = async (req, res) => {
   // //~ Controle d'authorisation de l'utilisateur
   const auth = verifyAuth(req);
   if (!auth)
-    return res
-      .status(400)
-      .send({ message: "Veuillez créer un compte ou vous connecter" });
+    return res.status(400).send({
+      results: false,
+      errors: "Please connect or register for create quizz !",
+    });
 
   //~ Création du quizz
   const quizz = await Quizz.findOrBuild({
@@ -187,7 +188,11 @@ module.exports.createQuizz = async (req, res) => {
     raw: true,
   });
 
-  if (quizz[1]) {
+  if (!quizz[1]) {
+    return res
+      .status(400)
+      .send({ results: false, errors: "Name of quizz already exist" });
+  } else {
     await quizz[0].save(); //-- création du quizz
 
     //~ Création des questions lié à l'id du quizz précédemment créé
@@ -223,7 +228,7 @@ module.exports.createQuizz = async (req, res) => {
   }
 
   res.status(201).send({
-    results: "Félicitation vous venez de créer votre nouveau Quizz !",
+    results: true,
   });
 };
 

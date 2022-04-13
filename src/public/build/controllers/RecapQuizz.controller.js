@@ -1,21 +1,10 @@
 "use-strict";
 
 import { CreateQuizz } from "../data/Quizz.datas.js";
+import { UserQuizz } from "../views/UserQuizz.views.js";
 
 export function RecapQuizzController() {
-  const submit = document.getElementById("submit");
-  const pens = document.querySelectorAll("[data-pen]");
-  const resps = document.querySelectorAll("[data-resp]");
-
-  pens.forEach((pen) => {
-    pen.addEventListener("click", () => {
-      resps.forEach((resp) => {
-        if (resp.dataset.resp == pen.dataset.pen)
-          resp.classList.toggle("hidden");
-      });
-    });
-  });
-
+  let submit = document.getElementById("submit");
   submit.addEventListener("click", () => formatData());
 }
 
@@ -48,7 +37,7 @@ async function formatData() {
   if (ok) {
     let quizz = JSON.parse(localStorage.getItem("NewQuizz"));
     quizz.name = title.value;
-    quizz.id_category = category.value
+    quizz.id_category = category.value;
 
     for (let q in quizz.quests) {
       const resps = document.querySelectorAll(`[data-resp='${q}']`);
@@ -60,7 +49,13 @@ async function formatData() {
     }
 
     localStorage.setItem("NewQuizz", JSON.stringify(quizz));
-    const { results } = await CreateQuizz();
-    console.log(results);
+    let { results, errors } = await CreateQuizz();
+
+    if (results) {
+      alert("Your quizz has been create succesfully !");
+      UserQuizz();
+    } else {
+      alert(errors);
+    }
   }
 }

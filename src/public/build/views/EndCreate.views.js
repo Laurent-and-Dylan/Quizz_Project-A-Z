@@ -5,40 +5,31 @@ import { Container } from "../components/container.js";
 import { recap } from "../components/recap.js";
 import { GetCategories } from "../data/Categories.datas.js";
 import { inputCategory } from "../components/category.js";
+import { Button } from "../components/Button.js";
 
 export async function EndCreate() {
   let categories = await GetCategories();
-  let section = document.querySelector("section");
-
-  section.innerHTML = "";
-  section.classList.remove(
-    "relative",
-    "flex",
-    "flex-col",
-    "justify-evenly",
-    "h-[65vh]"
-  );
-
   let quizz = JSON.parse(localStorage.getItem("NewQuizz"));
+
   let container = Container.Base();
-  container.className = "flex justify-evenly flex-wrap";
+  container.className =
+    "flex justify-evenly flex-wrap min-h-[65vh] w-3/5 py-1 mx-auto";
   container.innerHTML = `
-  <input id='title' type="text" class="block h-20 mx-auto text-center text-4xl text-jaune font-normal bg-transparent" value="${quizz.name}">
+  <input id='title' type="text" class="block h-10 mx-auto text-center text-4xl text-jaune font-normal bg-transparent" value="${quizz.name}">
+  ${inputCategory(categories)}
   `;
-  inputCategory(categories);
 
   let subContainer = Container.SubContainer();
-  subContainer.className = "w-full";
+  subContainer.className = "w-full flex flex-col flex-wrap justify-center";
   for (let q in quizz.quests) {
     subContainer.innerHTML += recap.quest(quizz.quests[q], q);
     for (let r in quizz.resps[q]) {
-      recap.resps(quizz.resps[q][r][0], q);
+      let label = r == 0 ? "Good Answer :" : "Bad Answer :";
+      recap.resps(quizz.resps[q][r][0], q, label);
     }
   }
 
-  subContainer.innerHTML += `
-  <button class="block mx-auto mt-[10vh] w-28 h-9 rounded-xl font-medium md:w-52 md:h-11 lg:h-14 lg:w-80 lg:rounded-2xl lg:text-3xl text-white bg-gradient-to-r hover:bg-gradient-to-l from-yellow-300 to-amber-500 hover:scale-105 shadow-2xl shadow-white opacity-80 md:shadow-2xl md:shadow-white" id="submit">Submit</button>
-  `;
+  subContainer.innerHTML += new Button("Submit", "submit", "mx-auto").display;
 
   RecapQuizzController();
 }

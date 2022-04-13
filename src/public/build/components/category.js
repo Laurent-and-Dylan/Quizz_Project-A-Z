@@ -10,15 +10,14 @@ export function category(category) {
 }
 
 export function inputCategory(categories) {
-  const container = document.getElementById("container");
   let options = "";
 
   for (let c in categories) {
-    options += `<option value="${categories[c].id_category}">${categories[c].name}</option>`;
+    options += `<option value="${categories[c].id_category}" class="text-black text-3xl ">${categories[c].name}</option>`;
   }
 
-  container.innerHTML += `
-    <select id="category">
+  return `
+    <select id="category" class="block w-40 bg-transparent text-jaune text-3xl h-10">
       ${options}
     </select>
   `;
