@@ -5,13 +5,16 @@ import { quizz } from "../components/quizz.js";
 import { QuizzController } from "../controllers/Quizz.controller.js";
 
 export async function Quizz(results) {
-  const section = document.querySelector("section");
+  let container = Container.Base();
+  container.innerHTML = `
+    <h1 class="text-3xl font-extrabold text-center text-jaune uppercase">Select quizz</h1>
+  `;
 
-  section.innerHTML = "";
-  Container.quizz();
+  let subContainer = Container.SubContainer();
+  subContainer.className = "grid grid-cols-3 gap-8 my-10 justify-items-center";
 
-  for (let i = 0; i < 10; i++) {
-    quizz(results[0]);
+  for (let r in results) {
+    subContainer.innerHTML += quizz(results[r]);
   }
 
   QuizzController();

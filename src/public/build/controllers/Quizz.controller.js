@@ -10,9 +10,7 @@ export function QuizzController() {
   quizz.forEach((quiz) => {
     quiz.addEventListener("click", async (e) => {
       let id = e.target.dataset.quizz;
-      console.log(id);
       await GetQuizz(id);
-      // localStorage.setItem("Quizz", JSON.stringify(result));
 
       subContainer.innerHTML += new Button(
         "Play",
